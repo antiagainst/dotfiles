@@ -1,0 +1,25 @@
+[user]
+	name = Lei Zhang
+	email = antiagainst@gmail.com
+[core]
+	editor = vim
+[color]
+	ui = true
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[merge]
+	tool = vimdiff
+[alias]
+	co = checkout
+	br = branch
+	cm = commit
+	st = status
+[push]
+	default = simple
