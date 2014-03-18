@@ -17,8 +17,9 @@ Bundle 'tpope/vim-repeat'
 Bundle 'matchit.zip'
 Bundle 'tpope/vim-surround'
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'L9'
-Bundle 'FuzzyFinder'
+"Bundle 'L9'
+"Bundle 'FuzzyFinder'
+Bundle 'kien/ctrlp.vim'
 "Bundle 'DrawIt'
 
 " bash, tmux
@@ -39,6 +40,7 @@ Bundle 'klen/python-mode'
 "Bundle 'mattn/emmet-vim'
 "Bundle 'vim-ruby/vim-ruby'
 "Bundle 'tpope/vim-rails'
+Bundle 'plasticboy/vim-markdown'
 
 " tool support
 Bundle 'tpope/vim-fugitive'
@@ -235,6 +237,10 @@ set complete=.,w,b,u,t,i
 map <Leader>beo :MBEOpen<cr>
 map <Leader>bec :MBEClose<cr>
 map <Leader>bet :MBEToggle<cr>
+
+" ctrlp options
+
+"let g:ctrlp_log = 1
 
 " taglist options
 
