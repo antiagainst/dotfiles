@@ -20,7 +20,7 @@ Bundle 'terryma/vim-multiple-cursors'
 "Bundle 'L9'
 "Bundle 'FuzzyFinder'
 Bundle 'kien/ctrlp.vim'
-"Bundle 'DrawIt'
+Bundle 'DrawIt'
 
 " bash, tmux
 Bundle 'tpope/vim-eunuch'
@@ -294,10 +294,15 @@ let g:indent_guides_guide_size=1
 
 let g:pymode_motion = 1
 let g:pymode_doc = 1
-let g:pymode_doc_bind = '<leader><leader>pd'
+let g:pymode_doc_bind = 'K'
 let g:pymode_run = 1
-let g:pymode_run_bind = '<leader><leader>pr'
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe', 'pylint']
+let g:pymode_run_bind = '<leader>r'
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pylint']
+
+" vim-markdown options
+
+let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_initial_foldlevel=1
 
 " latex-suite option
 
