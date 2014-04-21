@@ -1,0 +1,74 @@
+"===[ Settings ]========================================================
+
+" Autocomplete using Firefox Awesomebar subsystem, search engines, and keyword URLs
+set complete=ls
+
+" List all the possible completions and complete first match
+set wildmode='list:full'
+
+" Set the toolbars
+set toolbars=noaddons,nobookmarks,nomenu,navigation,tabs
+
+" Show the number of the tabs
+set tabnumbers
+
+" Remove close buttion on tabs
+set! browser.tabs.closebuttons=3
+
+" Don't beep when error happens
+set noerrorbells
+
+" Make Firefox run faster by using JIT
+set! javascript.options.jit.chrome=true
+
+"===[ Status bars ]=====================================================
+
+" Make bar yellow when focused.
+" From: http://www.reddit.com/r/linux/comments/99d55/i_could_use_a_little_vimperator_help_also/
+javascript <<EOF
+    (function() {
+        var inputElement = document.getElementById('liberator-commandline-command');
+        function swapBGColor(event) {
+            inputElement.style.backgroundColor = event.type == "focus" ? "yellow" : "";
+        }
+        inputElement.addEventListener('focus', swapBGColor, false);
+        inputElement.addEventListener('blur', swapBGColor, false);
+    })();
+EOF
+
+"===[ Auto commands ]===================================================
+
+" Pass through all keys (like CTRL-Z) on Gmail and Google Docs:
+"autocmd LocationChange .* :js modes.passAllKeys = /doc|mail\.google\.com/.test(buffer.URL)
+
+"===[ Custom commands ]=================================================
+
+" Run :disable to disable Vimperator and resume normal Firefox behavior.
+javascript function disable() { is_vimperator_active = false; liberator.execute(':set tabnumbers'); modes.passAllKeys = true; }
+command! disable javascript disable()
+
+" Load configuration file into current browser, useful for updating after editing this file.
+command! sourcerc :source ~/.vimperatorrc
+
+" Move to the previous/next page
+set nextpattern^='\s*[下后][一]?[页张个篇章]\s*','››','[Pp]rev'
+set previouspattern^='\s*[上前][一]?[页张个篇章]\s*','‹‹','[Nn]ext'
+
+"===[ Style ]===========================================================
+
+" Change style of hint
+hi Hint font:bold 15px "Droid Sans Mono", monospace !important; margin:-.2ex; padding: 0 0 0 1px; outline:1px solid rgba(0, 0, 0, .5); background:rgba(255, 248, 231, .8); color:black; text-transform:uppercase;
+
+"===[ Mappings ]========================================================
+
+" Press 'm' to go to previous tab
+"noremap m :tabprevious<CR>
+" Press ',' to go to next tab
+"noremap , :tabnext<CR>
+
+" Press 'C-c' to copy, 'C-v' to paste, or 'C-x' to cut
+noremap <C-c> <S-ESC><C-c><S-ESC>
+noremap <C-v> <S-ESC><C-v><S-ESC>
+noremap <C-x> <S-ESC><C-x><S-ESC>
+
+"===[ fin ]=============================================================
