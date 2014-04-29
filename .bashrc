@@ -1,12 +1,12 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
-# If not running interactively, don't do anything
+# if not running interactively, don't do anything.
 [[ $- != *i* ]] && return
 
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 
-# append to the history file, don't overwrite it
+# append to the history file, don't overwrite it.
 shopt -s histappend
 
 HISTSIZE=1000
@@ -16,14 +16,14 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will
+# if set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
-# make less more friendly for non-text input files, see lesspipe(1)
+# make less more friendly for non-text input files, see lesspipe(1).
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-PS1='[\u \W]\$ '
+PS1='[\u@\h \W]\$ '
 
 # enable color support for manpage
 export LESS_TERMCAP_mb=$(printf "\e[1;37m")
@@ -38,62 +38,42 @@ function env() {
   exec /usr/bin/env "$@" | grep -v ^LESS_TERMCAP_
 }
 
-# Use Vim as man pager
+# use Vim as man pager.
 vman () {
   export PAGER="/bin/sh -c \"unset PAGER;col -b -x | \
                 vim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
 	        -c 'map <SPACE> <C-D>' -c 'map b <C-U>' \
 	        -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
-  # invoke man page
+  # invoke man page.
   man $1
 
-  # we muse unset the PAGER, so regular man pager is used afterwards
+  # we muse unset the PAGER, so regular man pager is used afterwards.
   unset PAGER
 }
 
-# enable color support of ls and also add handy aliases
+# enable color support of ls and also add handy aliases.
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
+# some more ls aliases.
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# colorize command output
-#export PATH="/usr/share/perl5/site_perl/auto/share/dist/Cope:/usr/local/lib/cw:$PATH"
-#export PATH="/usr/share/perl5/site_perl/auto/share/dist/Cope:$PATH"
-#export PATH="/usr/local/lib/cw:$PATH"
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-#if [ -f ~/.bash_aliases ]; then
-#    . ~/.bash_aliases
-#fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-#if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-#    . /etc/bash_completion
-#fi
-
-# source-highlight-esc.h requires to install package source-highlight
+# source-highlight-esc.h requires to install package source-highlight.
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export LESS=' -R '
 
 export VISUAL=vim
 export EDITOR=vim
 
-# ibus input method
+# ibus input method.
 #export GTK_IM_MODULE=ibus
 #export XMODIFIERS=@im=ibus
 #export QT_IM_MODULE=ibus
@@ -106,6 +86,6 @@ if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
 	export TERM=xterm-256color
 fi
 
-# use tmux as default
+# use tmux as default.
 #[[ $TERM != "screen-256color" ]] && tmux && exit
 [[ $TERM != "screen-256color" ]] && tmux
