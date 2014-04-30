@@ -10,6 +10,7 @@ Bundle 'gmarik/vundle'
 
 " theme, colorscheme
 Bundle 'flazz/vim-colorschemes'
+Bundle 'kien/rainbow_parentheses.vim'
 
 " motion, repeating
 Bundle 'Lokaltog/vim-easymotion'
@@ -41,6 +42,7 @@ Bundle 'klen/python-mode'
 "Bundle 'vim-ruby/vim-ruby'
 "Bundle 'tpope/vim-rails'
 Bundle 'plasticboy/vim-markdown'
+Bundle 'derekwyatt/vim-scala'
 
 " tool support
 Bundle 'tpope/vim-fugitive'
@@ -298,6 +300,33 @@ let g:pymode_doc_bind = 'K'
 let g:pymode_run = 1
 let g:pymode_run_bind = '<leader>r'
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pylint']
+
+" rainbow-parantheses options
+
+let g:rbpt_colorpairs = [
+    \ ['brown', 'RoyalBlue3'],
+    \ ['Darkblue', 'SeaGreen3'],
+    \ ['darkgray', 'DarkOrchid3'],
+    \ ['darkgreen', 'firebrick3'],
+    \ ['darkcyan', 'RoyalBlue3'],
+    \ ['darkred', 'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown', 'firebrick3'],
+    \ ['gray', 'RoyalBlue3'],
+    \ ['black', 'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue', 'firebrick3'],
+    \ ['darkgreen', 'RoyalBlue3'],
+    \ ['darkcyan', 'SeaGreen3'],
+    \ ['darkred', 'DarkOrchid3'],
+    \ ['red', 'firebrick3'],
+    \ ]
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 " vim-markdown options
 
