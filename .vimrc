@@ -51,12 +51,20 @@ Bundle 'jcf/vim-latex'
 " IDE
 "Bundle 'scrooloose/nerdtree'
 "Bundle 'winmanager'
+Bundle 'regedarek/ZoomWin'
 Bundle 'fholgado/minibufexpl.vim'
+Bundle 'majutsushi/tagbar'
 "Bundle 'taglist.vim'
 
 
 " Global Settings
 " ===============
+
+" how many lines of history VIM should remember
+set history=100
+
+" auto read when a file is changed from the outside
+set autoread
 
 " set the <Leader>
 "let mapleader=";"
@@ -66,6 +74,11 @@ vnoremap <Leader>y "+y
 " paste from system clipboard
 nmap <Leader>p "+p
 
+" smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 " go to the next spilt window
 nnoremap <Leader>gs <C-W><C-W>
 
@@ -103,8 +116,8 @@ syntax on
 " colorscheme for python
 "autocmd FileType python colorscheme anotherdark
 
-" colorscheme for 256 colors
 set background=dark
+let g:solarized_termcolors=256
 colorscheme solarized
 highlight Normal ctermbg=none
 "colorscheme molokai
@@ -117,6 +130,9 @@ filetype plugin on
 " enable loading the indent file for specific file types
 " The result is that when a file is edited its indent file is loaded.
 filetype indent on
+
+" highlight word under cursor
+:autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 " highlight search results
 set hlsearch
@@ -258,6 +274,10 @@ let g:winManagerWidth=30
 nmap :wm :WMToggle<CR>
 nnoremap <silent> <F8> :WMToggle<CR>
 
+" ZoomWin options
+
+nmap <leader>o <c-w>o
+
 " NERDTree options
 
 " set NERDTree window width
@@ -265,6 +285,9 @@ let NERDTreeWinSize=30
 " set NERDTree window position
 let NERDTreeWinPos="right"
 nmap :nt :NERDTreeToggle
+
+" Tagbar options
+nnoremap <silent> <F5> :TagbarToggle<CR>
 
 " Vimux options
 
@@ -292,15 +315,6 @@ let g:user_zen_leader_key = '<c-y>'
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 
-" python-mode options
-
-let g:pymode_motion = 1
-let g:pymode_doc = 1
-let g:pymode_doc_bind = 'K'
-let g:pymode_run = 1
-let g:pymode_run_bind = '<leader>r'
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pylint']
-
 " rainbow-parantheses options
 
 let g:rbpt_colorpairs = [
@@ -327,6 +341,15 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+
+" python-mode options
+
+let g:pymode_motion = 1
+let g:pymode_doc = 1
+let g:pymode_doc_bind = 'K'
+let g:pymode_run = 1
+let g:pymode_run_bind = '<leader>r'
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pylint']
 
 " vim-markdown options
 
