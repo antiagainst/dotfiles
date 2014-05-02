@@ -4,61 +4,74 @@
 " using Vundle
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim/
+
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
 
 " theme, colorscheme
-Bundle 'flazz/vim-colorschemes'
-Bundle 'kien/rainbow_parentheses.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'kien/rainbow_parentheses.vim'
 
 " motion, repeating
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'tpope/vim-repeat'
-Bundle 'matchit.zip'
-Bundle 'tpope/vim-surround'
-Bundle 'terryma/vim-multiple-cursors'
-"Bundle 'L9'
-"Bundle 'FuzzyFinder'
-Bundle 'kien/ctrlp.vim'
-Bundle 'DrawIt'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'tpope/vim-repeat'
+Plugin 'matchit.zip'
+Plugin 'tpope/vim-surround'
+Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'L9'
+"Plugin 'FuzzyFinder'
+Plugin 'kien/ctrlp.vim'
+Plugin 'DrawIt'
 
 " bash, tmux
-Bundle 'tpope/vim-eunuch'
-Bundle 'benmills/vimux'
+Plugin 'tpope/vim-eunuch'
+Plugin 'benmills/vimux'
 
 " programming
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'antiAgainst/cscope-macros.vim'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'nathanaelkane/vim-indent-guides'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'antiAgainst/cscope-macros.vim'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 " language support
-Bundle 'a.vim'
-Bundle 'klen/python-mode'
-"Bundle 'c.vim'
-"Bundle 'rstacruz/sparkup'
-"Bundle 'mattn/emmet-vim'
-"Bundle 'vim-ruby/vim-ruby'
-"Bundle 'tpope/vim-rails'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'derekwyatt/vim-scala'
+Plugin 'a.vim'
+Plugin 'klen/python-mode'
+"Plugin 'c.vim'
+"Plugin 'rstacruz/sparkup'
+"Plugin 'mattn/emmet-vim'
+"Plugin 'vim-ruby/vim-ruby'
+"Plugin 'tpope/vim-rails'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'derekwyatt/vim-scala'
 
 " tool support
-Bundle 'tpope/vim-fugitive'
-Bundle 'jcf/vim-latex'
+Plugin 'tpope/vim-fugitive'
+Plugin 'jcf/vim-latex'
 
 " IDE
-"Bundle 'scrooloose/nerdtree'
-"Bundle 'winmanager'
-Bundle 'regedarek/ZoomWin'
-Bundle 'fholgado/minibufexpl.vim'
-Bundle 'majutsushi/tagbar'
-"Bundle 'taglist.vim'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'winmanager'
+Plugin 'regedarek/ZoomWin'
+Plugin 'fholgado/minibufexpl.vim'
+Plugin 'majutsushi/tagbar'
+"Plugin 'taglist.vim'
+
+call vundle#end()
 
 
 " Global Settings
 " ===============
+
+" enable filetype detection
+filetype on
+" enable loading the plugin files for specific file types
+" The result is that when a file is edited its plugin file is loaded.
+filetype plugin on
+" enable loading the indent file for specific file types
+" The result is that when a file is edited its indent file is loaded.
+filetype indent on
 
 " how many lines of history VIM should remember
 set history=100
@@ -121,15 +134,6 @@ let g:solarized_termcolors=256
 colorscheme solarized
 highlight Normal ctermbg=none
 "colorscheme molokai
-
-" enable filetype detection
-filetype on
-" enable loading the plugin files for specific file types
-" The result is that when a file is edited its plugin file is loaded.
-filetype plugin on
-" enable loading the indent file for specific file types
-" The result is that when a file is edited its indent file is loaded.
-filetype indent on
 
 " highlight word under cursor
 :autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
