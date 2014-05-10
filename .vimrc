@@ -136,7 +136,7 @@ highlight Normal ctermbg=none
 "colorscheme molokai
 
 " highlight word under cursor
-:autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+":autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 
 " highlight search results
 set hlsearch
