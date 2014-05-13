@@ -78,7 +78,7 @@ export EDITOR=vim
 #export XMODIFIERS=@im=ibus
 #export QT_IM_MODULE=ibus
 
-PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+#PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
 export PATH=~/data/klee/install/bin:~/.local/bin:$PATH
 
