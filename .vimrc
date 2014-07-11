@@ -240,6 +240,7 @@ endif
 
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 1
+let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
 
 " new-omni-completion
 
