@@ -34,6 +34,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'antiAgainst/cscope-macros.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'kana/vim-operator-user'
+Plugin 'rhysd/vim-clang-format'
 
 " language support
 Plugin 'a.vim'
@@ -45,6 +47,8 @@ Plugin 'klen/python-mode'
 "Plugin 'tpope/vim-rails'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'derekwyatt/vim-scala'
+"Plugin 'tikhomirov/vim-glsl'
+"Plugin 'antiAgainst/llvm.vim'
 
 " tool support
 Plugin 'tpope/vim-fugitive'
@@ -74,7 +78,7 @@ filetype plugin on
 filetype indent on
 
 " how many lines of history VIM should remember
-set history=100
+set history=1000
 
 " auto read when a file is changed from the outside
 set autoread
@@ -154,19 +158,20 @@ set smartindent
 " Programming Language Support
 " ============================
 
+" tabstop=X 	ts	Number of spaces that a <Tab> in the file counts for.
+" shiftwidth=X 	sw	Number of spaces to use for each step of (auto)indent.
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set smarttab
+set expandtab
+
 " C/C++ programming helpers
 augroup csrc
   au!
 "  autocmd FileType *      set nocindent smartindent
   autocmd FileType c,cpp  set cindent
 augroup END
-
-" tabstop=X 	ts	Number of spaces that a <Tab> in the file counts for.
-" shiftwidth=X 	sw	Number of spaces to use for each step of (auto)indent.
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set smarttab
 
 augroup filetype
     au! BufRead,BufNewFile *.ll    set filetype=llvm
@@ -238,9 +243,18 @@ endif
 
 " YouCompleteMe options
 
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf = 1
 let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
+
+" clang-format options
+
+let g:clang_format#code_style = 'google'
+" map to <Leader>cf in C++ code
+autocmd FileType c,cc,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cc,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+" if you install vim-operator-user
+autocmd FileType c,cc,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 
 " new-omni-completion
 
@@ -354,6 +368,7 @@ let g:pymode_doc = 1
 let g:pymode_doc_bind = 'K'
 let g:pymode_run = 1
 let g:pymode_run_bind = '<leader>r'
+let g:pymode_rope_lookup_project = 0
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pylint']
 
 " vim-markdown options
