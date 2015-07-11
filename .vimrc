@@ -31,8 +31,8 @@ Plugin 'benmills/vimux'
 
 " programming
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'antiAgainst/vim-rtags'
-Plugin 'antiAgainst/cscope-macros.vim'
+Plugin 'antiagainst/vim-rtags'
+Plugin 'antiagainst/cscope-macros.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'kana/vim-operator-user'
@@ -49,7 +49,7 @@ Plugin 'klen/python-mode'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'derekwyatt/vim-scala'
 "Plugin 'tikhomirov/vim-glsl'
-"Plugin 'antiAgainst/llvm.vim'
+"Plugin 'antiagainst/llvm.vim'
 
 " tool support
 Plugin 'tpope/vim-fugitive'
