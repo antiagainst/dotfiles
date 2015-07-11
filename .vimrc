@@ -31,6 +31,7 @@ Plugin 'benmills/vimux'
 
 " programming
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'antiAgainst/vim-rtags'
 Plugin 'antiAgainst/cscope-macros.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -249,6 +250,7 @@ let g:ycm_confirm_extra_conf = 0
 
 " clang-format options
 
+let g:clang_format#command = '/usr/bin/clang-format'
 let g:clang_format#code_style = 'google'
 " map to <Leader>cf in C++ code
 autocmd FileType c,cc,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
@@ -368,8 +370,10 @@ let g:pymode_doc = 1
 let g:pymode_doc_bind = 'K'
 let g:pymode_run = 1
 let g:pymode_run_bind = '<leader>r'
-let g:pymode_rope_lookup_project = 0
+let g:pymode_rope = 0
+let g:pymode_rope_lookup_project = 1
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pylint']
+let g:pymode_lint_ignore = 'C0111,'
 
 " vim-markdown options
 
