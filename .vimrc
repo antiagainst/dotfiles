@@ -186,6 +186,14 @@ augroup filetype
     au! BufRead,BufNewFile *Makefile* set filetype=make
 augroup END
 
+augroup filetype
+   au! BufRead,BufNewFile *.vert  set filetype=glsl
+augroup END
+
+augroup filetype
+   au! BufRead,BufNewFile *.frag  set filetype=glsl
+augroup END
+
 " In Makefiles, don't expand tabs to spaces, since we need the actual tabs.
 autocmd FileType make set noexpandtab
 
