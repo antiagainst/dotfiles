@@ -48,6 +48,7 @@ Plugin 'klen/python-mode'
 "Plugin 'tpope/vim-rails'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'rust-lang/rust.vim'
 "Plugin 'tikhomirov/vim-glsl'
 "Plugin 'antiagainst/llvm.vim'
 
