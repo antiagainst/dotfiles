@@ -14,55 +14,63 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kien/rainbow_parentheses.vim'
 
-" motion, repeating
+" motion
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-repeat'
 Plugin 'matchit.zip'
 Plugin 'tpope/vim-surround'
 Plugin 'terryma/vim-multiple-cursors'
+
+" searching
 "Plugin 'L9'
 "Plugin 'FuzzyFinder'
 Plugin 'kien/ctrlp.vim'
-Plugin 'DrawIt'
+Plugin 'rking/ag.vim'
+Plugin 'junegunn/fzf'
 
-" bash, tmux
-Plugin 'tpope/vim-eunuch'
+" tmux, shell
 Plugin 'benmills/vimux'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-glaive'
+Plugin 'google/vim-syncopate'
 
 " programming
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'antiagainst/vim-rtags'
-Plugin 'antiagainst/cscope-macros.vim'
+"Plugin 'antiagainst/cscope-macros.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'kana/vim-operator-user'
 Plugin 'rhysd/vim-clang-format'
 
+Plugin 'DrawIt'
+
 " language support
 Plugin 'a.vim'
-Plugin 'klen/python-mode'
 "Plugin 'c.vim'
-"Plugin 'rstacruz/sparkup'
-"Plugin 'mattn/emmet-vim'
+Plugin 'klen/python-mode'
+Plugin 'fatih/vim-go'
+Plugin 'rust-lang/rust.vim'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'plasticboy/vim-markdown'
 "Plugin 'vim-ruby/vim-ruby'
 "Plugin 'tpope/vim-rails'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'rust-lang/rust.vim'
-"Plugin 'tikhomirov/vim-glsl'
+Plugin 'tikhomirov/vim-glsl'
 "Plugin 'antiagainst/llvm.vim'
-
-" tool support
-Plugin 'tpope/vim-fugitive'
+"Plugin 'rstacruz/sparkup' " HTML
+"Plugin 'mattn/emmet-vim' " HTML & CSS
 Plugin 'jcf/vim-latex'
 
 " IDE
-"Plugin 'scrooloose/nerdtree'
-"Plugin 'winmanager'
-Plugin 'regedarek/ZoomWin'
+Plugin 'scrooloose/nerdtree'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'majutsushi/tagbar'
 "Plugin 'taglist.vim'
+"Plugin 'winmanager'
+Plugin 'regedarek/ZoomWin'
 
 call vundle#end()
 
@@ -94,12 +102,12 @@ vnoremap <Leader>y "+y
 nmap <Leader>p "+p
 
 " smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+"map <C-j> <C-W>j
+"map <C-k> <C-W>k
+"map <C-h> <C-W>h
+"map <C-l> <C-W>l
 " go to the next spilt window
-nnoremap <Leader>gs <C-W><C-W>
+"nnoremap <Leader>gn <C-W><C-W>
 
 " A hidden buffer is a buffer with some unsaved modifications and is not
 " displayed in a window. Hidden buffers are useful, if you want to edit
@@ -290,6 +298,9 @@ map <Leader>bet :MBEToggle<cr>
 
 "let g:ctrlp_log = 1
 
+" ag options
+let g:ag_working_path_mode="r"
+
 " taglist options
 
 " only show tags for the current file
@@ -299,25 +310,46 @@ nmap :tl :Tlist
 
 " winmanager options
 
-let g:winManagerWindowLayout='FileExplorer|TagList'
+let g:winManagerWindowLayout='NERDTree|Tagbar'
 let g:winManagerWidth=30
 nmap :wm :WMToggle<CR>
 nnoremap <silent> <F8> :WMToggle<CR>
 
-" ZoomWin options
+let g:NERDTree_title = "[NERDTree]"
+function! NERDTree_Start()
+  exe 'q'
+  exe 'NERDTree'
+endfunction
 
-nmap <leader>o <c-w>o
+function! NERDTree_IsValid()
+  return 1
+endfunction
+
+let g:Tagbar_title = "[Tagbar]"
+function! Tagbar_Start()
+  exe 'q'
+  exe 'TagbarOpen'
+endfunction
+
+function! Tagbar_IsValid()
+  return 1
+endfunction
 
 " NERDTree options
-
-" set NERDTree window width
 let NERDTreeWinSize=30
-" set NERDTree window position
-let NERDTreeWinPos="right"
+let NERDTreeWinPos="left"
 nmap :nt :NERDTreeToggle
 
 " Tagbar options
-nnoremap <silent> <F5> :TagbarToggle<CR>
+"let g:tagbar_left=1
+"let g:tagbar_vertical = 30
+let g:tagbar_width = 30
+nmap :tb :TagbarToggle
+"nnoremap <silent> <F5> :TagbarToggle<CR>
+
+" ZoomWin options
+
+"nmap <leader>o <c-w>o
 
 " Vimux options
 
@@ -338,7 +370,7 @@ map <Leader>vz :VimuxZoomRunner<CR>
 
 " zencoding options
 
-let g:user_zen_leader_key = '<c-y>'
+"let g:user_zen_leader_key = '<c-y>'
 
 " vim-indent-guide options
 
@@ -383,6 +415,30 @@ let g:pymode_rope = 0
 let g:pymode_rope_lookup_project = 1
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'pylint']
 let g:pymode_lint_ignore = 'C0111,'
+
+" vim-go
+
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>gr <Plug>(go-rename)
+
+"au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>h <Plug>(go-def-split)
+au FileType go nmap <Leader>v <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_autosave = 1
+let g:go_fmt_fail_silently = 1
 
 " vim-markdown options
 
