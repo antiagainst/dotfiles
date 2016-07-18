@@ -298,6 +298,10 @@ map <Leader>bet :MBEToggle<cr>
 
 "let g:ctrlp_log = 1
 
+" FZF
+
+nmap <Leader>f :FZF<cr>
+
 " ag options
 let g:ag_working_path_mode="r"
 
