@@ -14,6 +14,10 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kien/rainbow_parentheses.vim'
 
+" status
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 " motion
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-repeat'
@@ -112,7 +116,7 @@ nmap <Leader>p "+p
 " A hidden buffer is a buffer with some unsaved modifications and is not
 " displayed in a window. Hidden buffers are useful, if you want to edit
 " multiple buffers without saving the modifications made to a buffer while
-" loading other buffers. 
+" loading other buffers.
 set hidden
 
 " precede each line with its line number
@@ -256,9 +260,10 @@ endif
 " Plugin Configuration
 " ====================
 
-" powerline
+" airline
 
-"python from powerline.ext.vim import source_plugin; source_plugin()
+let g:airline_powerline_fonts = 1
+set laststatus=2
 
 " YouCompleteMe options
 
