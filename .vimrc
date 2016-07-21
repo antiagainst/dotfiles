@@ -117,6 +117,7 @@ set hidden
 
 " precede each line with its line number
 set number
+set relativenumber
 
 " show the line and column number of the cursor position
 set ruler
