@@ -268,7 +268,6 @@ set laststatus=2
 
 " YouCompleteMe options
 
-let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 
