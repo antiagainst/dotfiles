@@ -10,7 +10,7 @@ ln -sf $(pwd)/ycm_extra_conf.py $HOME/.ycm_extra_conf.py
 os=$(uname -s)
 
 if [ "$os" == "Linux" ]; then
-  mkdir $HOME/.fonts && cp $(pwd)/fonts/PowerlineSymbols.otf $HOME/.fonts/
+  [ ! -d $HOME/.fonts ] && mkdir $HOME/.fonts && cp $(pwd)/fonts/PowerlineSymbols.otf $HOME/.fonts/
 
   release=$(lsb_release -i | cut -f2)
   if [ "$release" == "Ubuntu" ]; then
