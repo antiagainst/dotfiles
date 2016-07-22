@@ -11,6 +11,7 @@ os=$(uname -s)
 
 if [ "$os" == "Linux" ]; then
   [ ! -d $HOME/.fonts ] && mkdir $HOME/.fonts && cp $(pwd)/fonts/PowerlineSymbols.otf $HOME/.fonts/
+  ln -sf $(pwd)/vimrc $HOME/.config/nvim/init.vim
 
   release=$(lsb_release -i | cut -f2)
   if [ "$release" == "Ubuntu" ]; then
