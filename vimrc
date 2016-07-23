@@ -18,12 +18,14 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-" motion
+" motion, object
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-repeat'
 Plugin 'matchit.zip'
 Plugin 'tpope/vim-surround'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'wellle/targets.vim'
 
 " searching
 "Plugin 'L9'
@@ -96,6 +98,10 @@ set history=1000
 
 " auto read when a file is changed from the outside
 set autoread
+
+" when sole j, k, move cursor by display lines when wrapping
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 " set the <Leader>
 "let mapleader=";"
