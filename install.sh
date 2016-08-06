@@ -10,12 +10,16 @@ ln -sf $(pwd)/ycm_extra_conf.py $HOME/.ycm_extra_conf.py
 os=$(uname -s)
 
 if [ "$os" == "Linux" ]; then
-  [ ! -d $HOME/.fonts ] && mkdir $HOME/.fonts && cp $(pwd)/fonts/PowerlineSymbols.otf $HOME/.fonts/
+  [ ! -d $HOME/.fonts ] && mkdir $HOME/.fonts
+  cp $(pwd)/fonts/PowerlineSymbols.otf $HOME/.fonts/
+
+  [ ! -d $HOME/.config/nvim ] && mkdir -p $HOME/.config/nvim
   ln -sf $(pwd)/vimrc $HOME/.config/nvim/init.vim
 
   release=$(lsb_release -i | cut -f2)
   if [ "$release" == "Ubuntu" ]; then
     ln -sf $(pwd)/tmux-ubuntu.conf  $HOME/.tmux-ubuntu.conf
+    [ ! -d $HOME/.config/fontconfig/fonts.conf ] && mkdir -p $HOME/.config/fontconfig/fonts.conf
     ln -sf $(pwd)/config/fontconfig/10-powerline-symbols.conf $HOME/.config/fontconfig/fonts.conf/10-powerline-symbols.conf
   elif [ "$release" != "Arch" ]; then
     print "linux release not supported:" $release
