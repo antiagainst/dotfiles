@@ -25,5 +25,6 @@ cd .dotfiles && ./install.sh
 ```bash
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
-cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer
+cd ~/.vim/bundle/YouCompleteMe
+./install.py --clang-completer --racer-completer
 ```
