@@ -438,14 +438,14 @@ au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 
-au FileType go nmap <Leader>s <Plug>(go-implements)
-au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>gs <Plug>(go-implements)
+au FileType go nmap <Leader>gi <Plug>(go-info)
 au FileType go nmap <Leader>gr <Plug>(go-rename)
 
 "au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>h <Plug>(go-def-split)
-au FileType go nmap <Leader>v <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>gh <Plug>(go-def-split)
+au FileType go nmap <Leader>gv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>gt <Plug>(go-def-tab)
 
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
