@@ -1,0 +1,21 @@
+{
+    "editor.fontFamily": "'PT Mono', 'Noto Sans Mono', 'Droid Sans Mono'",
+    "editor.rulers": [80],
+    "editor.renderWhitespace": "boundary",
+    "editor.renderIndentGuides": true,
+    "editor.formatOnSave": false,
+
+    "files.trimTrailingWhitespace": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 10000,
+
+    "extensions.autoUpdate": true,
+
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+
+    "clang-format.executable": "clang-format",
+    "clang-format.style":"Google",
+
+    "python.linting.pylintEnabled": true
+}
