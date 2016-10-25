@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ln -sf $(pwd)/dircolors         $HOME/.dircolors
+ln -sf $(pwd)/grc               $HOME/.grc
 ln -sf $(pwd)/gitconfig         $HOME/.gitconfig
 ln -sf $(pwd)/hgrc              $HOME/.hgrc
 ln -sf $(pwd)/tmux.conf         $HOME/.tmux.conf

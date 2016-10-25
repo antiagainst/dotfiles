@@ -1,0 +1,44 @@
+# this configuration file is suitable for displaying adb logcat
+
+# date
+regexp=^\d\d-\d\d \d\d:\d\d:\d\d\.\d\d\d
+colours=yellow
+count=once
+======
+# message levels
+regexp= [DI] 
+colours=bold green
+count=once
+======
+regexp= W 
+colours=bold yellow
+count=once
+======
+regexp= E 
+colours=bold red
+count=once
+======
+# message tags
+regexp=[DIWEV] (\w+) *:
+colours=unchanged, bold magenta
+count=once
+======
+# file locations
+regexp=/(\w+\.\w+:\d+): 
+colours=unchanged, bold magenta
+count=more
+======
+# All uppercase letters
+regexp=\b[A-Z_][A-Z_]+\b
+colours=cyan
+count=more
+======
+# everything in parentheses
+regexp=\(.+?\)
+colours=green
+count=more
+======
+# ip number
+regexp=\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}
+colours=magenta
+count=more
