@@ -6,11 +6,36 @@ Configuration files for my dev environment.
 Setup
 -----
 
-### (Ubuntu) Install packages
+### Install and configure Zsh
+
+Follow steps on https://github.com/antiagainst/prezto.
+
+### Install packages
+
+#### Common
+
+```bash
+# fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+```
+
+#### Ubuntu
 
 ```bash
 sudo apt install tmux zsh vim python-pip git cmake ninja-build clang
 sudo pip install --upgrade powerline-status
+
+# fasd
+sudo add-apt-repository ppa:aacebedo/fasd
+sudo apt update
+sudo apt install fasd
+```
+
+#### macOS
+
+```bash
+brew install fasd
 ```
 
 ### Checkout and link dotfiles
