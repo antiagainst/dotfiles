@@ -34,6 +34,9 @@ sudo apt install fasd
 
 #### macOS
 
+More about macOS set up:
+https://gist.github.com/antiagainst/5b63c39960d875b5d75b.
+
 ```bash
 brew install fasd reattach-to-user-namespace
 ```
@@ -43,6 +46,13 @@ brew install fasd reattach-to-user-namespace
 ```bash
 cd && git clone git@github.com:antiagainst/dotfiles.git .dotfiles
 cd .dotfiles && ./install.sh
+```
+
+### Tmux
+
+```bash
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+~/.tmux/plugins/tpm/bin/install_plugins
 ```
 
 ### Vim
