@@ -23,7 +23,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 #### Ubuntu
 
 ```bash
-sudo apt install tmux zsh vim python-pip git cmake ninja-build clang
+sudo apt install tmux zsh vim python-pip git cmake ninja-build clang xclip
 sudo pip install --upgrade powerline-status
 
 # fasd
@@ -35,7 +35,7 @@ sudo apt install fasd
 #### macOS
 
 ```bash
-brew install fasd
+brew install fasd reattach-to-user-namespace
 ```
 
 ### Checkout and link dotfiles
