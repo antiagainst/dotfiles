@@ -175,6 +175,7 @@ set ignorecase
 set autoindent
 set smartindent
 
+set backspace=indent,eol,start
 
 " Programming Language Support
 " ============================
@@ -279,7 +280,6 @@ let g:ycm_confirm_extra_conf = 0
 
 " clang-format options
 
-let g:clang_format#command = '/usr/bin/clang-format'
 let g:clang_format#code_style = 'google'
 " map to <Leader>cf in C++ code
 autocmd FileType c,cc,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
