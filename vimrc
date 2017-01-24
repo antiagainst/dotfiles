@@ -69,6 +69,7 @@ Plugin 'tikhomirov/vim-glsl'
 "Plugin 'rstacruz/sparkup' " HTML
 "Plugin 'mattn/emmet-vim' " HTML & CSS
 Plugin 'jcf/vim-latex'
+Plugin 'kbenzie/vim-spirv'
 
 " IDE
 Plugin 'scrooloose/nerdtree'
