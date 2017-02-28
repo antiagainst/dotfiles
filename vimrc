@@ -5,6 +5,7 @@
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
+set rtp+=~/.skim
 
 call vundle#begin()
 
@@ -31,8 +32,10 @@ Plugin 'wellle/targets.vim'
 "Plugin 'L9'
 "Plugin 'FuzzyFinder'
 Plugin 'kien/ctrlp.vim'
-Plugin 'rking/ag.vim'
-Plugin 'junegunn/fzf'
+" Plugin 'rking/ag.vim'
+" Plugin 'junegunn/fzf'
+" Plugin 'lotabout/skim'   " contains :SK and skim#run
+Plugin 'lotabout/skim.vim' " contains utilities built upon skim like :Files, :Buffers
 
 " tmux, shell
 Plugin 'benmills/vimux'
@@ -311,9 +314,10 @@ map <Leader>bet :MBEToggle<cr>
 
 "let g:ctrlp_log = 1
 
-" FZF
+" fzf/skim
 
-nmap <Leader>f :FZF<cr>
+"nmap <Leader>f :FZF<cr>
+nmap <Leader>f :SK<cr>
 
 " ag options
 let g:ag_working_path_mode="r"
