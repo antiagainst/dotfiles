@@ -12,18 +12,11 @@ Follow steps on https://github.com/antiagainst/prezto.
 
 ### Install packages
 
-#### Common
-
-```bash
-# fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-```
-
 #### Ubuntu
 
 ```bash
 sudo apt install tmux zsh vim python-pip git cmake ninja-build clang xclip
+sudo apt install rbenv
 sudo pip install --upgrade powerline-status
 
 # fasd
@@ -38,7 +31,17 @@ More about macOS set up:
 https://gist.github.com/antiagainst/5b63c39960d875b5d75b.
 
 ```bash
-brew install fasd reattach-to-user-namespace
+brew install tmux vim cmake ninja fasd
+brew install reattach-to-user-namespace
+```
+
+#### Common
+
+```bash
+# fzf
+gem install asciidoctor pygments.rb
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
 ```
 
 ### Checkout and link dotfiles
