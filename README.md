@@ -31,8 +31,11 @@ More about macOS set up:
 https://gist.github.com/antiagainst/5b63c39960d875b5d75b.
 
 ```bash
-brew install tmux vim cmake ninja fasd
-brew install reattach-to-user-namespace
+brew install tmux vim cmake ninja fasd rtags the_silver_searcher tree bash
+brew install reattach-to-user-namespace htop exiftool
+
+brew tap burntsushi/ripgrep https://github.com/BurntSushi/ripgrep.git
+brew install burntsushi/ripgrep/ripgrep-bin
 ```
 
 #### Common
@@ -40,8 +43,8 @@ brew install reattach-to-user-namespace
 ```bash
 # fzf
 gem install asciidoctor pygments.rb
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+git clone --depth 1 git@github.com:lotabout/skim.git ~/.skim
+~/.skim/install
 ```
 
 ### Checkout and link dotfiles
