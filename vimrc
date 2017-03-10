@@ -36,6 +36,7 @@ Plugin 'kien/ctrlp.vim'
 " Plugin 'junegunn/fzf'
 " Plugin 'lotabout/skim'   " contains :SK and skim#run
 Plugin 'lotabout/skim.vim' " contains utilities built upon skim like :Files, :Buffers
+Plugin 'jremmen/vim-ripgrep' " contains :Rg
 
 " tmux, shell
 Plugin 'benmills/vimux'
