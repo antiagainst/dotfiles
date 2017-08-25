@@ -23,6 +23,10 @@ sudo pip install --upgrade powerline-status
 sudo add-apt-repository ppa:aacebedo/fasd
 sudo apt update
 sudo apt install fasd
+
+# ag & rg
+sudo apt install silversearcher-ag
+cargo install ripgrep
 ```
 
 #### macOS
@@ -34,8 +38,8 @@ https://gist.github.com/antiagainst/5b63c39960d875b5d75b.
 brew install tmux vim cmake ninja fasd rtags the_silver_searcher tree bash
 brew install reattach-to-user-namespace htop exiftool
 
-brew tap burntsushi/ripgrep https://github.com/BurntSushi/ripgrep.git
-brew install burntsushi/ripgrep/ripgrep-bin
+# ag & rg
+brew install the_silver_searcher ripgrep
 ```
 
 #### Common
