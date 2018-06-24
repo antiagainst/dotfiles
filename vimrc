@@ -31,12 +31,13 @@ Plugin 'wellle/targets.vim'
 " searching
 "Plugin 'L9'
 "Plugin 'FuzzyFinder'
-Plugin 'kien/ctrlp.vim'
+"Plugin 'kien/ctrlp.vim'
 " Plugin 'rking/ag.vim'
 " Plugin 'junegunn/fzf'
 " Plugin 'lotabout/skim'   " contains :SK and skim#run
 Plugin 'lotabout/skim.vim' " contains utilities built upon skim like :Files, :Buffers
 Plugin 'jremmen/vim-ripgrep' " contains :Rg
+Plugin 'dyng/ctrlsf.vim'
 
 " tmux, shell
 Plugin 'benmills/vimux'
@@ -322,6 +323,10 @@ nmap <Leader>f :SK<cr>
 
 " ag options
 let g:ag_working_path_mode="r"
+
+" CtrlSF options
+
+let g:ctrlsf_ackprg = 'rg'
 
 " taglist options
 
