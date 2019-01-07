@@ -444,9 +444,9 @@ au Syntax * RainbowParenthesesLoadBraces
 " python-mode options
 
 if g:os == "Darwin"
-  let g:python_host_prog="/Users/antiagainst/.homebrew/bin/python2"
+  let g:python_host_prog="/Users/antiagainst/.homebrew/bin/python3"
 elseif g:os == "Linux"
-  let g:python_host_prog="/usr/bin/python2"
+  let g:python_host_prog="/usr/bin/python3"
 endif
 
 let g:pymode_motion = 1
