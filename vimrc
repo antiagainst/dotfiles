@@ -296,7 +296,7 @@ let g:ycm_confirm_extra_conf = 0
 
 " clang-format options
 
-let g:clang_format#code_style = 'google'
+let g:clang_format#code_style = 'llvm'
 " map to <Leader>cf in C++ code
 autocmd FileType c,cc,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cc,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
