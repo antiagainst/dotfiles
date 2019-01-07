@@ -75,6 +75,7 @@ Plugin 'tikhomirov/vim-glsl'
 "Plugin 'mattn/emmet-vim' " HTML & CSS
 Plugin 'jcf/vim-latex'
 Plugin 'kbenzie/vim-spirv'
+Plugin 'antiagainst/vim-tablegen'
 
 " IDE
 Plugin 'scrooloose/nerdtree'
