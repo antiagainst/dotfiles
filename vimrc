@@ -87,6 +87,15 @@ Plugin 'regedarek/ZoomWin'
 
 call vundle#end()
 
+" Detect OS
+" =========
+if !exists("g:os")
+  if has("win64") || has("win32") || has("win16")
+    let g:os = "Windows"
+  else
+    let g:os = substitute(system('uname'), '\n', '', '')
+  endif
+endif
 
 " Global Settings
 " ===============
@@ -433,6 +442,12 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 " python-mode options
+
+if g:os == "Darwin"
+  let g:python_host_prog="/Users/antiagainst/.homebrew/bin/python2"
+elseif g:os == "Linux"
+  let g:python_host_prog="/usr/bin/python2"
+endif
 
 let g:pymode_motion = 1
 let g:pymode_doc = 1
