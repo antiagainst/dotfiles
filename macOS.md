@@ -19,9 +19,9 @@ ssh-keygen -t rsa -b 4096 -C "MacBook Pro"
 ```sh
 brew install tmux macvim
 brew install cmake ninja
-brew install htop tree
+brew install htop tree wget
 brew install fasd rtags ripgrep
-brew install bash pyenv rbenv
+brew install bash go pyenv rbenv
 brew install exiftool
 
 brew tap sbdchd/skim
