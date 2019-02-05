@@ -20,6 +20,10 @@ ssh-keygen -t rsa -b 4096 -C "MacBook Pro"
 brew install tmux macvim cmake ninja fasd rtags tree bash htop ripgrep pyenv
 brew install exiftool
 
+brew tap sbdchd/skim
+brew install sbdchd/skim/skim
+
+# Or use the following command to also install sk-tmux
 git clone --depth 1 git@github.com:lotabout/skim.git $HOME/.skim && $HOME/.skim/install
 ```
 
