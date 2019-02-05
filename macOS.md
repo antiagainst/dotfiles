@@ -17,12 +17,15 @@ ssh-keygen -t rsa -b 4096 -C "MacBook Pro"
 ### Install essential tools
 
 ```sh
-brew install tmux macvim cmake ninja fasd rtags tree bash htop ripgrep pyenv
+brew install tmux macvim
+brew install cmake ninja
+brew install htop tree
+brew install fasd rtags ripgrep
+brew install bash pyenv rbenv
 brew install exiftool
 
 brew tap sbdchd/skim
 brew install sbdchd/skim/skim
-
 # Or use the following command to also install sk-tmux
 git clone --depth 1 git@github.com:lotabout/skim.git $HOME/.skim && $HOME/.skim/install
 ```
@@ -57,11 +60,21 @@ chsh -s /bin/zsh
 cd $HOME/.dotfiles && ./install.sh
 ```
 
-Set up Python
+### Setup Python
+
 ```sh
 pyenv install -l
 pyenv install <version>
 pyenv global <version>
+```
+
+### Setup Ruby
+
+```sh
+rbenv install -l
+rbenv install <version>
+rbenv global <version>
+gem install bundler
 ```
 
 ### Setup Tmux
