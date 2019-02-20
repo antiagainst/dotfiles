@@ -27,7 +27,7 @@ if [ "$os" == "Linux" ]; then
   cp $(pwd)/fonts/PowerlineSymbols.otf $HOME/.fonts/
 
   release=$(lsb_release -i | cut -f2)
-  if [ "$release" == "Ubuntu" ]; then
+  if [ "$release" == "Ubuntu" ] || [ "$release" == "Debian" ]; then
     ln -sf $(pwd)/tmux-ubuntu.conf  $HOME/.tmux-ubuntu.conf
     [ ! -d $HOME/.config/fontconfig/fonts.conf ] &&  mkdir -p $HOME/.config/fontconfig/fonts.conf
     ln -sf $(pwd)/config/fontconfig/10-powerline-symbols.conf $HOME/.config/fontconfig/fonts.conf/10-powerline-symbols.conf
