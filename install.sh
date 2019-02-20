@@ -28,15 +28,14 @@ if [ "$os" == "Linux" ]; then
 
   release=$(lsb_release -i | cut -f2)
   if [ "$release" == "Ubuntu" ] || [ "$release" == "Debian" ]; then
-    ln -sf $(pwd)/tmux-ubuntu.conf  $HOME/.tmux-ubuntu.conf
     [ ! -d $HOME/.config/fontconfig/fonts.conf ] &&  mkdir -p $HOME/.config/fontconfig/fonts.conf
     ln -sf $(pwd)/config/fontconfig/10-powerline-symbols.conf $HOME/.config/fontconfig/fonts.conf/10-powerline-symbols.conf
 
     powerline_dir=$(pip show powerline-status | grep Location | cut -d\  -f2)
     [ -z "$powerline_dir" ] && fail "powerline-status not installed"
-    rm -rf $HOME/.tmux-ubuntu.conf && cp $(pwd)/tmux-ubuntu.conf $HOME/.tmux-ubuntu.conf
-    echo "source $powerline_dir/powerline/bindings/tmux/powerline.conf" >> $HOME/.tmux-ubuntu.conf
-    echo "source $powerline_dir/powerline/bindings/tmux/powerline_tmux_2.1_plus.conf" >> $HOME/.tmux-ubuntu.conf
+    rm -rf $HOME/.tmux-debian.conf && cp $(pwd)/tmux-debian.conf $HOME/.tmux-debian.conf
+    echo "source $powerline_dir/powerline/bindings/tmux/powerline.conf" >> $HOME/.tmux-debian.conf
+    echo "source $powerline_dir/powerline/bindings/tmux/powerline_tmux_2.1_plus.conf" >> $HOME/.tmux-debian.conf
   elif [ "$release" != "Arch" ]; then
     fail "linux release not supported:" $release
   fi
