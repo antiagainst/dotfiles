@@ -1,15 +1,20 @@
 Ubuntu Environment Setup
 ========================
 
-### Install and configure Zsh
+### Generate SSH Key
 
-Follow steps on https://github.com/antiagainst/prezto.
+```sh
+ssh-keygen -t rsa -b 4096 -C "Ubuntu"
+```
 
-### Install packages
+### Install essential tools
 
-```bash
-sudo apt install tmux zsh vim python-pip git cmake ninja-build clang xclip
+```sh
+sudo apt install tmux zsh vim
+sudo apt install cmake ninja-build clang
+sudo apt install python-pip
 sudo apt install rbenv
+suto apt install xclip
 sudo pip install --upgrade powerline-status
 
 # fasd
@@ -27,25 +32,57 @@ git clone --depth 1 git@github.com:lotabout/skim.git ~/.skim
 ~/.skim/install
 ```
 
-### Checkout and link dotfiles
+### Clone configuration repo
 
-```bash
-cd && git clone git@github.com:antiagainst/dotfiles.git .dotfiles
-cd .dotfiles && ./install.sh
+```sh
+cd
+git clone git@github.com:antiagainst/dotfiles.git .dotfiles
+git clone --recursive git@github.com:antiagainst/prezto.git .zprezto
 ```
 
-### Tmux
+### Setup Zsh configuration
 
-```bash
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-~/.tmux/plugins/tpm/bin/install_plugins
+```sh
+# Launch Zsh
+zsh
+
+# Copying the Zsh configuration files
+setopt EXTENDED_GLOB
+for rcfile in $HOME/.zprezto/runcoms/^README.md(.N); do
+  ln -s "$rcfile" "$HOME/.${rcfile:t}"
+done
+
+# Set Zsh as default shell
+chsh -s /bin/zsh
 ```
 
-### Vim
+### Setup tool configuration
 
-```bash
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```sh
+cd $HOME/.dotfiles && ./install.sh
+```
+
+### Setup Ruby
+
+```sh
+rbenv install -l
+rbenv install <version>
+rbenv global <version>
+gem install bundler
+```
+
+### Setup Tmux
+
+```sh
+git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+$HOME/.tmux/plugins/tpm/bin/install_plugins
+```
+
+### Setup Vim
+
+```sh
+git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
-cd ~/.vim/bundle/YouCompleteMe
+cd $HOME/.vim/bundle/YouCompleteMe
 ./install.py --clang-completer --racer-completer
 ```
