@@ -15,21 +15,14 @@ sudo apt install cmake ninja-build clang
 sudo apt install python-pip
 sudo apt install rbenv
 suto apt install xclip
+
 sudo pip install --upgrade powerline-status
 
-# fasd
-sudo add-apt-repository ppa:aacebedo/fasd
-sudo apt update
-sudo apt install fasd
-
-# ag & rg
-sudo apt install silversearcher-ag
+curl https://sh.rustup.rs -sSf | sh
 cargo install ripgrep
 
-# fzf
-gem install asciidoctor pygments.rb
-git clone --depth 1 git@github.com:lotabout/skim.git ~/.skim
-~/.skim/install
+sudo apt install fasd
+git clone --depth 1 git@github.com:lotabout/skim.git $HOME/.skim && $HOME/.skim/install
 ```
 
 ### Clone configuration repo
