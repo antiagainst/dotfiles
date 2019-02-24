@@ -10,7 +10,7 @@ ssh-keygen -t rsa -b 4096 -C "Ubuntu"
 ### Install essential tools
 
 ```sh
-sudo apt install tmux zsh vim
+sudo apt install tmux zsh vim neovim
 sudo apt install cmake ninja-build clang
 sudo apt install python-pip
 sudo apt install rbenv

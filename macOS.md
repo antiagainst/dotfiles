@@ -17,7 +17,7 @@ ssh-keygen -t rsa -b 4096 -C "MacBook Pro"
 ### Install essential tools
 
 ```sh
-brew install tmux macvim
+brew install tmux macvim neovim
 brew install cmake ninja
 brew install htop tree wget
 brew install fasd rtags ripgrep
