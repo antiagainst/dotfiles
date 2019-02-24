@@ -28,6 +28,8 @@ brew tap sbdchd/skim
 brew install sbdchd/skim/skim
 # Or use the following command to also install sk-tmux
 git clone --depth 1 git@github.com:lotabout/skim.git $HOME/.skim && $HOME/.skim/install
+
+cargo install lsd
 ```
 
 ### Clone configuration repo
@@ -75,6 +77,7 @@ rbenv install -l
 rbenv install <version>
 rbenv global <version>
 gem install bundler
+gem install colorls
 ```
 
 ### Setup Tmux
@@ -93,7 +96,22 @@ cd $HOME/.vim/bundle/YouCompleteMe
 ./install.py --clang-completer --racer-completer
 ```
 
-### Setup Powerline
+### Setup theme
+
+[iTerm2, Zsh with Powerlevel9K — Power up your terminal‘s colour scheme and productivity level!](https://medium.com/the-code-review/make-your-terminal-more-colourful-and-productive-with-iterm2-and-zsh-11b91607b98c)
+
+```sh
+# Powerline9k
+# If not already installed as a submodule of prezto, then
+#brew tap sambadevi/powerlevel9k
+#brew install powerlevel9k
+
+# Nerd font
+brew tap caskroom/fonts
+brew cask install font-hack-nerd-font
+```
+
+#### Setup Powerline
 
 * Download and install patched font from https://github.com/supermarin/powerline-fonts
 * Install Powerline by following https://powerline.readthedocs.io/en/master/installation/osx.html

@@ -19,7 +19,7 @@ suto apt install xclip
 sudo pip install --upgrade powerline-status
 
 curl https://sh.rustup.rs -sSf | sh
-cargo install ripgrep
+cargo install ripgrep lsd
 
 sudo apt install fasd
 git clone --depth 1 git@github.com:lotabout/skim.git $HOME/.skim && $HOME/.skim/install
@@ -62,6 +62,7 @@ rbenv install -l
 rbenv install <version>
 rbenv global <version>
 gem install bundler
+gem install colorls
 ```
 
 ### Setup Tmux
