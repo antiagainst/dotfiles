@@ -80,3 +80,9 @@ vim +PluginInstall +qall
 cd $HOME/.vim/bundle/YouCompleteMe
 ./install.py --clang-completer --racer-completer
 ```
+
+### Theme configuration
+
+* `sudo apt install adapta-gtk-theme`
+* Install oranchelo-icon-theme
+* Install Monaco Nerd Mono fonts
