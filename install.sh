@@ -5,7 +5,6 @@ ln -sf $(pwd)/gitconfig         $HOME/.gitconfig
 ln -sf $(pwd)/hgrc              $HOME/.hgrc
 ln -sf $(pwd)/tmux.conf         $HOME/.tmux.conf
 ln -sf $(pwd)/vimrc             $HOME/.vimrc
-ln -sf $(pwd)/ycm_extra_conf.py $HOME/.ycm_extra_conf.py
 
 [ -d $HOME/.grc ] && rm -rf $HOME/.grc
 ln -sf $(pwd)/grc           $HOME/.grc
