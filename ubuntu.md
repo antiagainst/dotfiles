@@ -81,7 +81,7 @@ $HOME/.tmux/plugins/tpm/bin/install_plugins
 git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 cd $HOME/.vim/bundle/YouCompleteMe
-./install.py --clang-completer --racer-completer
+python3 install.py --clangd-completer --rust-completer
 ```
 
 ### Theme configuration
