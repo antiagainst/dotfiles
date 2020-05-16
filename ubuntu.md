@@ -12,9 +12,12 @@ ssh-keygen -t rsa -b 4096 -C "Ubuntu"
 ```sh
 sudo apt install tmux zsh vim neovim
 sudo apt install cmake ninja-build clang
-sudo apt install python-pip
+sudo apt install python3 python3-pip
 sudo apt install rbenv
 suto apt install xclip
+
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 38
+sudo update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 30
 
 sudo pip install --upgrade powerline-status
 
