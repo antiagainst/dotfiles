@@ -1,21 +1,22 @@
 {
-    "editor.fontFamily": "'PT Mono', 'Noto Sans Mono', 'Droid Sans Mono'",
-    "editor.rulers": [80],
-    "editor.renderWhitespace": "boundary",
-    "editor.renderIndentGuides": true,
-    "editor.formatOnSave": false,
+    "cmake.buildDirectory": "${workspaceRoot}/build/${buildType}",
+    "cmake.configureOnOpen": false,
+    "cmake.configureSettings": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+    },
+    "cmake.generator": "Ninja",
 
-    "files.trimTrailingWhitespace": true,
-    "files.autoSave": "afterDelay",
-    "files.autoSaveDelay": 10000,
+    "editor.fontFamily": "'Monaco NF', 'Noto Sans Mono', 'Droid Sans Mono'",
+    "editor.renderIndentGuides": true,
+    "editor.renderWhitespace": "boundary",
+    "editor.formatOnSave": false,
+    "editor.rulers": [80],
 
     "extensions.autoUpdate": true,
 
-    "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 10000,
+    "files.trimTrailingWhitespace": true,
 
-    "clang-format.executable": "clang-format",
-    "clang-format.style":"Google",
-
-    "python.linting.pylintEnabled": true
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe"
 }
