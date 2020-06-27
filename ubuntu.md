@@ -61,13 +61,17 @@ cd $HOME/.dotfiles && ./install.sh
 ### Setup Ruby
 
 ```sh
+git clone https://github.com/rbenv/ruby-build.git $HOME/.rbenv/plugins/ruby-build
+git clone https://github.com/tpope/rbenv-aliases.git $HOME/.rbenv/plugins/rbenv-aliases
+git clone https://github.com/rbenv/rbenv-default-gems.git $HOME/.rbenv/plugins/rbenv-default-gems
 rbenv install -l
 rbenv install <version>
 rbenv global <version>
 gem install bundler
 gem install colorls
+rbenv alias --auto
 ```
-
+(Reference: [Using rbenv on Ubuntu 18.04](https://makandracards.com/makandra/28149-using-rbenv-on-ubuntu-18-04))
 ### Setup Tmux
 
 ```sh
