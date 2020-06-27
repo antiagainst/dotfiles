@@ -89,3 +89,4 @@ python3 install.py --clangd-completer --rust-completer
 * `sudo apt install adapta-gtk-theme`
 * Install oranchelo-icon-theme
 * Install Monaco Nerd Mono fonts
+* `sudo apt install gnome-tweak-tool`
