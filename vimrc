@@ -296,6 +296,11 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_binary_path = exepath("clangd")
 
+autocmd FileType c,cpp,objc,objcpp nnoremap <Leader>gt :YcmCompleter GoTo<CR>
+autocmd FileType c,cpp,objc,objcpp nnoremap <Leader>gi :YcmCompleter GoToInclude<CR>
+autocmd FileType c,cpp,objc,objcpp nnoremap <Leader>gd :YcmCompleter GoToDeclaration<CR>
+autocmd FileType c,cpp,objc,objcpp nnoremap <Leader>gr :YcmCompleter GoToReferences<CR>
+
 " clang-format options
 
 let g:clang_format#code_style = 'llvm'
