@@ -71,7 +71,18 @@ gem install bundler
 gem install colorls
 rbenv alias --auto
 ```
+
 (Reference: [Using rbenv on Ubuntu 18.04](https://makandracards.com/makandra/28149-using-rbenv-on-ubuntu-18-04))
+
+### Setup Pyenv
+
+```sh
+ git clone https://github.com/pyenv/pyenv.git $HOME/.pyenv
+ pyenv install --list
+ pyenv install <version>
+ pyenv global <version>
+```
+
 ### Setup Tmux
 
 ```sh
