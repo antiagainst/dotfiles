@@ -77,7 +77,7 @@ rbenv alias --auto
 ### Setup Pyenv
 
 ```sh
- git clone https://github.com/pyenv/pyenv.git $HOME/.pyenv
+ curl https://pyenv.run | bash
  pyenv install --list
  pyenv install <version>
  pyenv global <version>
