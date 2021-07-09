@@ -76,6 +76,8 @@ rbenv alias --auto
 
 ### Setup Pyenv
 
+[Install dependencies for building Python](https://github.com/pyenv/pyenv/wiki#suggested-build-environment), then
+
 ```sh
  curl https://pyenv.run | bash
  pyenv install --list
