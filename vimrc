@@ -298,7 +298,7 @@ let g:ycm_clangd_binary_path = exepath("clangd")
 
 autocmd FileType c,cpp,objc,objcpp nnoremap <Leader>gt :YcmCompleter GoTo<CR>
 autocmd FileType c,cpp,objc,objcpp nnoremap <Leader>gi :YcmCompleter GoToInclude<CR>
-autocmd FileType c,cpp,objc,objcpp nnoremap <Leader>gd :YcmCompleter GoToDeclaration<CR>
+autocmd FileType c,cpp,objc,objcpp nnoremap <Leader>gd :YcmCompleter GoToDefinition<CR>
 autocmd FileType c,cpp,objc,objcpp nnoremap <Leader>gr :YcmCompleter GoToReferences<CR>
 
 " clang-format options
