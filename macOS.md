@@ -66,9 +66,11 @@ pyenv global <version>
 
 #### Setup Powerline
 
+
 * Install powerline status
 
 ```sh
+pip install --upgrade git+git://github.com/powerline/powerline
 pip install --upgrade powerline-status
 ```
 
@@ -112,22 +114,7 @@ $HOME/.tmux/plugins/tpm/bin/install_plugins
 git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 cd $HOME/.vim/bundle/YouCompleteMe
-./install.py --clang-completer --racer-completer
-```
-
-### Setup theme
-
-[iTerm2, Zsh with Powerlevel9K — Power up your terminal‘s colour scheme and productivity level!](https://medium.com/the-code-review/make-your-terminal-more-colourful-and-productive-with-iterm2-and-zsh-11b91607b98c)
-
-```sh
-# Powerline9k
-# If not already installed as a submodule of prezto, then
-#brew tap sambadevi/powerlevel9k
-#brew install powerlevel9k
-
-# Nerd font
-brew tap caskroom/fonts
-brew cask install font-hack-nerd-font
+python3 install.py --clangd-completer --rust-completer
 ```
 
 
