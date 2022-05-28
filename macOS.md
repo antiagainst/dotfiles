@@ -26,7 +26,7 @@ brew install exiftool
 
 brew tap sbdchd/skim
 brew install sbdchd/skim/skim
-# Or use the following command to also install sk-tmux
+# And use the following command to also install sk-tmux
 git clone --depth 1 git@github.com:lotabout/skim.git $HOME/.skim && $HOME/.skim/install
 
 cargo install lsd
