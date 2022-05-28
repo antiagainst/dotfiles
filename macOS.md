@@ -56,12 +56,6 @@ done
 chsh -s /bin/zsh
 ```
 
-### Setup tool configuration
-
-```sh
-cd $HOME/.dotfiles && ./install.sh
-```
-
 ### Setup Python
 
 ```sh
@@ -69,6 +63,25 @@ pyenv install -l
 pyenv install <version>
 pyenv global <version>
 ```
+
+#### Setup Powerline
+
+* Install powerline status
+
+```sh
+pip install --upgrade powerline-status
+```
+
+* Download and install patched font
+
+```sh
+# https://github.com/ryanoasis/nerd-fonts
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
+brew install --cask font-fira-code-nerd-font
+# Monaco Nerd Font from Google Drive
+```
+
 
 ### Setup Ruby
 
@@ -78,6 +91,12 @@ rbenv install <version>
 rbenv global <version>
 gem install bundler
 gem install colorls
+```
+
+### Setup tool configuration
+
+```sh
+cd $HOME/.dotfiles && ./install.sh
 ```
 
 ### Setup Tmux
@@ -111,7 +130,4 @@ brew tap caskroom/fonts
 brew cask install font-hack-nerd-font
 ```
 
-#### Setup Powerline
 
-* Download and install patched font from https://github.com/supermarin/powerline-fonts
-* Install Powerline by following https://powerline.readthedocs.io/en/master/installation/osx.html
