@@ -24,8 +24,7 @@ brew install fasd rtags ripgrep
 brew install bash go pyenv rbenv
 brew install exiftool
 
-brew tap sbdchd/skim
-brew install sbdchd/skim/skim
+brew install sk
 # And use the following command to also install sk-tmux
 git clone --depth 1 git@github.com:lotabout/skim.git $HOME/.skim && $HOME/.skim/install
 
