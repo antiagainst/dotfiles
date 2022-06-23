@@ -52,6 +52,9 @@ chsh -s /bin/zsh
 [Install dependencies for building Python](https://github.com/pyenv/pyenv/wiki#suggested-build-environment), then
 
 ```sh
+# Build dynamic Python library for YouCompleteMe plugin 
+export PYTHON_CONFIGURE_OPTS="--enable-shared"
+
 curl https://pyenv.run | bash
 pyenv install --list
 pyenv install <version>
