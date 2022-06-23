@@ -16,16 +16,11 @@ sudo apt install python3 python3-pip
 sudo apt install rbenv
 suto apt install xclip
 
-sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 38
-sudo update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 30
-
-sudo pip install --upgrade powerline-status
+sudo apt install fasd
+git clone --depth 1 git@github.com:lotabout/skim.git $HOME/.skim && $HOME/.skim/install
 
 curl https://sh.rustup.rs -sSf | sh
 cargo install ripgrep lsd
-
-sudo apt install fasd
-git clone --depth 1 git@github.com:lotabout/skim.git $HOME/.skim && $HOME/.skim/install
 ```
 
 ### Clone configuration repo
@@ -52,6 +47,20 @@ done
 chsh -s /bin/zsh
 ```
 
+### Set up Python
+
+[Install dependencies for building Python](https://github.com/pyenv/pyenv/wiki#suggested-build-environment), then
+
+```sh
+curl https://pyenv.run | bash
+pyenv install --list
+pyenv install <version>
+pyenv global <version>
+
+pip install --upgrade pip
+pip install --upgrade powerline-status
+```
+
 ### Setup tool configuration
 
 ```sh
@@ -73,17 +82,6 @@ rbenv alias --auto
 ```
 
 (Reference: [Using rbenv on Ubuntu 18.04](https://makandracards.com/makandra/28149-using-rbenv-on-ubuntu-18-04))
-
-### Setup Pyenv
-
-[Install dependencies for building Python](https://github.com/pyenv/pyenv/wiki#suggested-build-environment), then
-
-```sh
- curl https://pyenv.run | bash
- pyenv install --list
- pyenv install <version>
- pyenv global <version>
-```
 
 ### Setup Tmux
 
