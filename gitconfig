@@ -2,7 +2,8 @@
 	name = Lei Zhang
 	email = antiagainst@gmail.com
 [core]
-	editor = vim
+	editor = nvim
+	pager = delta
 [color]
 	ui = true
 [color "diff"]
@@ -16,6 +17,7 @@
 	untracked = cyan
 [merge]
 	tool = vimdiff
+	conflictstyle = diff3
 [alias]
 	co = checkout
 	br = branch
@@ -25,3 +27,9 @@
 	default = simple
 [pull]
 	rebase = true
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+[diff]
+    colorMoved = default
