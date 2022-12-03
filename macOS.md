@@ -18,17 +18,16 @@ ssh-keygen -t rsa -b 4096 -C "MacBook Pro"
 
 ```sh
 brew install tmux macvim neovim
-brew install cmake ninja
-brew install htop tree wget
-brew install fasd rtags ripgrep
+brew install cmake ninja rtags
+brew install htop bottom tree
+brew install lsd fasd broot
 brew install bash go pyenv rbenv
-brew install exiftool
+brew install bat git-delta
+brew install wget exiftool
 
-brew install sk
+brew install ripgrep sk
 # And use the following command to also install sk-tmux
 git clone --depth 1 git@github.com:lotabout/skim.git $HOME/.skim && $HOME/.skim/install
-
-cargo install lsd
 ```
 
 ### Clone configuration repo
