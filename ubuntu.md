@@ -54,6 +54,8 @@ chsh -s /bin/zsh
 ```sh
 # Build dynamic Python library for YouCompleteMe plugin 
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
+# Install bz2 so we compile Python with support for it; needed for YouCompleteMe
+sudo apt install libbz2-dev
 
 curl https://pyenv.run | bash
 pyenv install --list
