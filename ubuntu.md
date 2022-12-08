@@ -4,7 +4,7 @@ Ubuntu Environment Setup
 ### Generate SSH Key
 
 ```sh
-ssh-keygen -t rsa -b 4096 -C "Ubuntu"
+ssh-keygen -t ed25519 -C "Ubuntu"
 ```
 
 ### Install essential tools
@@ -20,7 +20,7 @@ sudo apt install fasd
 git clone --depth 1 git@github.com:lotabout/skim.git $HOME/.skim && $HOME/.skim/install
 
 curl https://sh.rustup.rs -sSf | sh
-cargo install ripgrep lsd
+cargo install ripgrep lsd bat bottom broot
 ```
 
 ### Clone configuration repo
