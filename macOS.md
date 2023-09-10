@@ -4,14 +4,14 @@ macOS Environment Setup
 ### Generate SSH Key
 
 ```sh
-ssh-keygen -t rsa -b 4096 -C "MacBook Pro"
+ssh-keygen -t ed25519 -C "MacBook Pro"
 ```
 
 ### Install Homebrew
 
 ```sh
 # Following https://brew.sh/ for updated instructions
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 ### Install essential tools
