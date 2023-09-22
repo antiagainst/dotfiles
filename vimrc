@@ -170,10 +170,10 @@ syntax on
 " colorscheme for python
 "autocmd FileType python colorscheme anotherdark
 
-set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
-highlight Normal ctermbg=none
+"set background=dark
+"let g:solarized_termcolors=256
+"colorscheme solarized
+"highlight Normal ctermbg=none
 "colorscheme molokai
 
 " highlight word under cursor
