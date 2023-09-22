@@ -120,3 +120,8 @@ pip install --upgrade pynvim # Needed for YCM in NeoVim
 ```
 
 
+### Setup iTerm2
+
+Import colorschems from https://github.com/mbadolato/iTerm2-Color-Schemes
+* Light theme: Mirage / DimmedMonokai / AdventureTime / Afterglow
+* Dark theme: AtelierSulphurpool
