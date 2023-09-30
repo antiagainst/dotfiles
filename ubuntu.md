@@ -7,22 +7,6 @@ Ubuntu Environment Setup
 ssh-keygen -t ed25519 -C "Ubuntu"
 ```
 
-### Install essential tools
-
-```sh
-sudo apt install tmux zsh vim neovim
-sudo apt install git cmake ninja-build clang
-sudo apt install python3 python3-pip
-sudo apt install rbenv
-suto apt install xclip
-
-sudo apt install fasd
-git clone --depth 1 git@github.com:lotabout/skim.git $HOME/.skim && $HOME/.skim/install
-
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-cargo install ripgrep lsd bat bottom broot skim
-```
-
 ### Clone configuration repo
 
 ```sh
@@ -47,17 +31,36 @@ done
 chsh -s /bin/zsh
 ```
 
+### Install essential tools
+
+```sh
+sudo apt install tmux zsh vim neovim
+sudo apt install git cmake ninja-build clang lld ccache
+sudo apt install python3 python3-pip
+sudo apt install rbenv
+suto apt install xclip
+
+sudo apt install fasd
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+cargo install ripgrep lsd bat bottom broot skim
+
+# And use the following command to also install sk-tmux
+git clone --depth 1 git@github.com:lotabout/skim.git $HOME/.skim && $HOME/.skim/install
+```
+
 ### Set up Python
 
 [Install dependencies for building Python](https://github.com/pyenv/pyenv/wiki#suggested-build-environment), then
 
 ```sh
+curl https://pyenv.run | bash
+
 # Build dynamic Python library for YouCompleteMe plugin 
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
 # Install bz2 so we compile Python with support for it; needed for YouCompleteMe
-sudo apt install libbz2-dev
+sudo apt install libssl-dev liblzma-dev libbz2-dev
 
-curl https://pyenv.run | bash
 pyenv install --list
 pyenv install <version>
 pyenv global <version>
