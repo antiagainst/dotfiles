@@ -102,11 +102,13 @@ git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.v
 vim +PluginInstall +qall
 cd $HOME/.vim/bundle/YouCompleteMe
 python3 install.py --clangd-completer --rust-completer
+pip install --upgrade pynvim # Needed for YCM in NeoVim
 ```
 
 ### Theme configuration
 
+* `sudo add-apt-repository universe`
+* `sudo apt install gnome-tweaks`
 * `sudo apt install adapta-gtk-theme`
 * Install oranchelo-icon-theme
 * Install Monaco Nerd Mono fonts
-* `sudo apt install gnome-tweak-tool`
