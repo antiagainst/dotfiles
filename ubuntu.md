@@ -11,7 +11,7 @@ ssh-keygen -t ed25519 -C "Ubuntu"
 
 ```sh
 sudo apt install tmux zsh vim neovim
-sudo apt install cmake ninja-build clang
+sudo apt install git cmake ninja-build clang
 sudo apt install python3 python3-pip
 sudo apt install rbenv
 suto apt install xclip
@@ -19,8 +19,8 @@ suto apt install xclip
 sudo apt install fasd
 git clone --depth 1 git@github.com:lotabout/skim.git $HOME/.skim && $HOME/.skim/install
 
-curl https://sh.rustup.rs -sSf | sh
-cargo install ripgrep lsd bat bottom broot
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+cargo install ripgrep lsd bat bottom broot skim
 ```
 
 ### Clone configuration repo
