@@ -35,7 +35,7 @@ chsh -s /bin/zsh
 
 ```sh
 sudo apt install tmux zsh vim neovim
-sudo apt install git cmake ninja-build clang lld ccache
+sudo apt install git cmake ninja-build clang lld
 sudo apt install python3 python3-pip
 sudo apt install rbenv
 suto apt install xclip
@@ -44,9 +44,11 @@ sudo apt install fasd
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cargo install ripgrep lsd bat bottom broot skim
-
 # And use the following command to also install sk-tmux
 git clone --depth 1 git@github.com:lotabout/skim.git $HOME/.skim && $HOME/.skim/install
+
+sudo apt install ccache
+ccache --max-size=50G
 ```
 
 ### Set up Python

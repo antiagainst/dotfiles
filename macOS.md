@@ -25,9 +25,13 @@ brew install bash go pyenv rbenv
 brew install bat git-delta
 brew install wget exiftool
 
+
 brew install ripgrep sk
 # And use the following command to also install sk-tmux
 git clone --depth 1 git@github.com:lotabout/skim.git $HOME/.skim && $HOME/.skim/install
+
+brew install ccache
+ccache --max-size=50G
 ```
 
 ### Clone configuration repo
