@@ -1,15 +1,17 @@
 {
-    "cmake.buildDirectory": "${workspaceRoot}/build/${buildType}",
+    "cmake.buildDirectory": "${workspaceRoot}/build-vscode/${buildType}",
     "cmake.configureOnOpen": false,
     "cmake.configureSettings": {
-        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_C_COMPILER_LAUNCHER": "ccache",
+        "CMAKE_CXX_COMPILER_LAUNCHER": "ccache"
     },
     "cmake.generator": "Ninja",
 
-    "editor.fontFamily": "'Monaco NF', 'Noto Sans Mono', 'Droid Sans Mono'",
-    "editor.renderIndentGuides": true,
-    "editor.renderWhitespace": "boundary",
     "editor.formatOnSave": false,
+    "editor.fontFamily": "'Intel One Mono', 'Fira Code', 'Monaco', 'Noto Sans Mono', monospace",
+    "editor.guides.indentation": true,
+    "editor.renderWhitespace": "boundary",
     "editor.rulers": [80],
 
     "extensions.autoUpdate": true,
@@ -18,5 +20,7 @@
     "files.autoSaveDelay": 10000,
     "files.trimTrailingWhitespace": true,
 
-    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe"
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    "window.zoomLevel": 1,
+    "explorer.confirmDelete": false
 }
