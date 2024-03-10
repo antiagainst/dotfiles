@@ -15,6 +15,7 @@ ln -sf $(pwd)/vimrc                     $HOME/.config/nvim/init.vim
 ln -sf $(pwd)/config/powerline/themes/tmux/default.json  $HOME/.config/powerline/themes/tmux/default.json
 
 os=$(uname -s)
+pip_path=${PIP_PATH:=pip}
 
 fail() {
   printf "%025s\n" "[failed]" "$@"
@@ -30,7 +31,7 @@ if [ "$os" == "Linux" ]; then
     [ ! -d $HOME/.config/fontconfig/fonts.conf ] &&  mkdir -p $HOME/.config/fontconfig/fonts.conf
     ln -sf $(pwd)/config/fontconfig/10-powerline-symbols.conf $HOME/.config/fontconfig/fonts.conf/10-powerline-symbols.conf
 
-    powerline_dir=$(pip show powerline-status | grep Location | cut -d\  -f2)
+    powerline_dir=$(${pip_path} show powerline-status | grep Location | cut -d\  -f2)
     [ -z "$powerline_dir" ] && fail "powerline-status not installed"
     rm -rf $HOME/.tmux-debian.conf && cp $(pwd)/tmux-debian.conf $HOME/.tmux-debian.conf
     echo "source $powerline_dir/powerline/bindings/tmux/powerline.conf" >> $HOME/.tmux-debian.conf
