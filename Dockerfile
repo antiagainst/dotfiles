@@ -7,12 +7,15 @@ ARG APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1
 
 # Basic development environment
 RUN apt-get update && apt-get install -y \
-  curl wget \
-  git zsh tmux vim neovim \
+  software-properties-common \
+  curl wget git zsh tmux \
   build-essential cmake ninja-build \
   clang lld ccache \
   python3 python3-pip \
   pkg-config fasd
+
+RUN add-apt-repository -y ppa:neovim-ppa/stable && \
+  apt-get update && apt-get install -y vim neovim vim-youcompleteme
 
 # Pyenv build dependencies
 RUN DEBIAN_FRONTEND=noninteractive TZ=America/Los_Angeles apt-get install -y \
@@ -27,26 +30,38 @@ RUN apt-get install -y \
   libcapstone-dev libtbb-dev libzstd-dev \
   libglfw3-dev libfreetype6-dev libgtk-3-dev
 
-# Development environment configuration files
-RUN git clone https://github.com/antiagainst/dotfiles $HOME/.dotfiles && \
-  git clone --recursive https://github.com/antiagainst/prezto $HOME/.zprezto
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Zsh configuration files
+RUN  git clone --recursive https://github.com/antiagainst/prezto $HOME/.zprezto
 RUN for rcfile in $HOME/.zprezto/runcoms/*; do ln -s $rcfile $HOME/.`basename ${rcfile}`; done
 
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > rust.sh
-RUN bash rust.sh -y && rm -rf rust.sh
-RUN $HOME/.cargo/bin/cargo install ripgrep lsd bat bottom broot skim cargo-cache
+# Rust developer toolchain and binaries
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > rust.sh && \
+  bash rust.sh -y && rm -rf rust.sh
+RUN $HOME/.cargo/bin/cargo install ripgrep lsd bat bottom broot skim cargo-cache && \
+  $HOME/.cargo/bin/cargo cache -a
 RUN git clone --depth 1 https://github.com/lotabout/skim $HOME/.skim && $HOME/.skim/install
 
-RUN curl https://pyenv.run > python.sh
-RUN bash python.sh && rm -rf python.sh
+# Pyenv setup
+ARG PYTHON_CONFIGURE_OPTS="--enable-shared"
+RUN curl https://pyenv.run > python.sh && bash python.sh && rm -rf python.sh && \
+  $HOME/.pyenv/bin/pyenv install 3.11.5 && $HOME/.pyenv/bin/pyenv global 3.11.5
+RUN $HOME/.pyenv/shims/pip install --upgrade pip powerline-status
+
+# Development environment configuration files
+RUN git clone https://github.com/antiagainst/dotfiles $HOME/.dotfiles && \
+  cd $HOME/.dotfiles && PIP_PATH=$HOME/.pyenv/shims/pip ./install.sh
 
 # Vim plugins
 RUN git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim && \
-  git clone https://github.com/ycm-core/YouCompleteMe.git $HOME/.vim/bundle/YouCompleteMe && \
-  cd $HOME/.vim/bundle/YouCompleteMe && \
-  git submodule update --init --recursive
+  $HOME/.pyenv/shims/pip install --upgrade pynvim
+#RUN [ "/bin/bash", "-c", "vim -T dumb -n -i NONE -es -S <(echo -e 'silent! PluginInstall')" ]
+#RUN ["/bin/bash", "-c", "vim.basic -E -s -u $HOME/.vimrc +PlugInstall +qall"]
 
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* && $HOME/.cargo/bin/cargo cache -a
+# Ccache settings
+ENV CCACHE_DIR=/ccahe
+RUN ccache --max-size=50G
 
 WORKDIR /root
 ENTRYPOINT /bin/zsh
