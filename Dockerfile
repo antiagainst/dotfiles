@@ -129,3 +129,4 @@ RUN cd $HOME/.vim/bundle/YouCompleteMe && git submodule update --init --recursiv
   $HOME/.pyenv/shims/pip install --upgrade pynvim
 
 WORKDIR /data
+ENTRYPOINT /usr/bin/zsh
