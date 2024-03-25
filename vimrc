@@ -22,7 +22,7 @@ Plugin 'vim-airline/vim-airline-themes'
 " motion, object
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-repeat'
-Plugin 'matchit.zip'
+Plugin 'vim-scripts/matchit.zip'
 Plugin 'tpope/vim-surround'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'michaeljsmith/vim-indent-object'
@@ -57,10 +57,10 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'kana/vim-operator-user'
 Plugin 'rhysd/vim-clang-format'
 
-Plugin 'DrawIt'
+Plugin 'vim-scripts/DrawIt'
 
 " language support
-Plugin 'a.vim'
+Plugin 'vim-scripts/a.vim'
 "Plugin 'c.vim'
 Plugin 'klen/python-mode'
 Plugin 'fatih/vim-go'
