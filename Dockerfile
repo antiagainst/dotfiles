@@ -32,8 +32,32 @@ RUN apt-get install -y \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
+ARG DOCKER_USERID=0
+ARG DOCKER_GROUPID=0
+ARG DOCKER_USERNAME=mirror
+ARG DOCKER_GROUPNAME=mirror
+
+RUN if [ ${DOCKER_USERID} -ne 0 ] && [ ${DOCKER_GROUPID} -ne 0 ]; then \
+    groupadd --gid ${DOCKER_GROUPID} ${DOCKER_GROUPNAME} && \
+    useradd --no-log-init --create-home \
+      --uid ${DOCKER_USERID} --gid ${DOCKER_GROUPID} \
+      --shell /usr/bin/zsh ${DOCKER_USERNAME}; \
+fi
+
+# Ccache settings
+ENV CCACHE_DIR=/ccache
+RUN ccache --max-size=15G
+
+# Create mapping directories and chown before switching user
+RUN mkdir -p /ccache && chown ${DOCKER_USERID}:${DOCKER_GROUPID} /ccache && \
+  mkdir -p /data && chown ${DOCKER_USERID}:${DOCKER_GROUPID} /data
+
+# Now switch to the mirror user and setup configurations
+USER ${DOCKER_USERNAME}
+WORKDIR /home/${DOCKER_USERNAME}
+
 # Zsh configuration files
-RUN  git clone --recursive https://github.com/antiagainst/prezto $HOME/.zprezto
+RUN  git clone --depth 1 --recursive https://github.com/antiagainst/prezto $HOME/.zprezto
 RUN for rcfile in $HOME/.zprezto/runcoms/*; do ln -s $rcfile $HOME/.`basename ${rcfile}`; done
 
 # Rust developer toolchain and binaries
@@ -50,10 +74,12 @@ RUN curl https://pyenv.run > python.sh && bash python.sh && rm -rf python.sh && 
 RUN $HOME/.pyenv/shims/pip install --upgrade pip powerline-status
 
 # Development environment configuration files
-RUN git clone https://github.com/antiagainst/dotfiles $HOME/.dotfiles && \
+RUN git clone --depth 1 https://github.com/antiagainst/dotfiles $HOME/.dotfiles && \
   cd $HOME/.dotfiles && PIP_PATH=$HOME/.pyenv/shims/pip ./install.sh
 
 # Vim plugins
+# It would be nice to directly install all plugins using Vundle. But didn't
+# find a working solution. So, just explicitly clone all interesting ones.
 #RUN [ "/bin/bash", "-c", "vim -T dumb -n -i NONE -es -S <(echo -e 'silent! PluginInstall')" ]
 #RUN ["/bin/bash", "-c", "vim.basic -E -s -u $HOME/.vimrc +PlugInstall +qall"]
 RUN git clone --depth 1 https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim && \
@@ -96,12 +122,10 @@ RUN git clone --depth 1 https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/b
   git clone --depth 1 https://github.com/scrooloose/nerdtree.git $HOME/.vim/bundle/nerdtree && \
   git clone --depth 1 https://github.com/fholgado/minibufexpl.vim.git $HOME/.vim/bundle/minibufexpl.vim && \
   git clone --depth 1 https://github.com/majutsushi/tagbar.git $HOME/.vim/bundle/tagbar && \
-  git clone --depth 1 https://github.com/regedarek/ZoomWin.git $HOME/.vim/bundle/ZoomWin && \
+  git clone --depth 1 https://github.com/regedarek/ZoomWin.git $HOME/.vim/bundle/ZoomWin
+
+RUN cd $HOME/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && \
+  $HOME/.pyenv/shims/python ./install.py --clangd-completer && \
   $HOME/.pyenv/shims/pip install --upgrade pynvim
 
-# Ccache settings
-ENV CCACHE_DIR=/ccahe
-RUN ccache --max-size=20G
-
 WORKDIR /data
-ENTRYPOINT /bin/zsh
