@@ -54,14 +54,54 @@ RUN git clone https://github.com/antiagainst/dotfiles $HOME/.dotfiles && \
   cd $HOME/.dotfiles && PIP_PATH=$HOME/.pyenv/shims/pip ./install.sh
 
 # Vim plugins
-RUN git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim && \
-  $HOME/.pyenv/shims/pip install --upgrade pynvim
 #RUN [ "/bin/bash", "-c", "vim -T dumb -n -i NONE -es -S <(echo -e 'silent! PluginInstall')" ]
 #RUN ["/bin/bash", "-c", "vim.basic -E -s -u $HOME/.vimrc +PlugInstall +qall"]
+RUN git clone --depth 1 https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim && \
+  git clone --depth 1 https://github.com/flazz/vim-colorschemes.git $HOME/.vim/bundle/vim-colorschemes && \
+  git clone --depth 1 https://github.com/kien/rainbow_parentheses.vim.git $HOME/.vim/bundle/rainbow_parentheses.vim && \
+  git clone --depth 1 https://github.com/vim-airline/vim-airline.git $HOME/.vim/bundle/vim-airline && \
+  git clone --depth 1 https://github.com/vim-airline/vim-airline-themes.git $HOME/.vim/bundle/vim-airline-themes && \
+  git clone --depth 1 https://github.com/Lokaltog/vim-easymotion.git $HOME/.vim/bundle/vim-easymotion && \
+  git clone --depth 1 https://github.com/tpope/vim-repeat.git $HOME/.vim/bundle/vim-repeat && \
+  git clone --depth 1 https://github.com/adelarsq/vim-matchit.git $HOME/.vim/bundle/vim-matchit && \
+  git clone --depth 1 https://github.com/tpope/vim-surround.git $HOME/.vim/bundle/vim-surround && \
+  git clone --depth 1 https://github.com/terryma/vim-multiple-cursors.git $HOME/.vim/bundle/vim-multiple-cursors && \
+  git clone --depth 1 https://github.com/michaeljsmith/vim-indent-object.git $HOME/.vim/bundle/vim-indent-object && \
+  git clone --depth 1 https://github.com/wellle/targets.vim.git $HOME/.vim/bundle/targets.vim && \
+  git clone --depth 1 https://github.com/lotabout/skim.vim.git $HOME/.vim/bundle/skim.vim && \
+  git clone --depth 1 https://github.com/jremmen/vim-ripgrep.git $HOME/.vim/bundle/vim-ripgrep && \
+  git clone --depth 1 https://github.com/dyng/ctrlsf.vim.git $HOME/.vim/bundle/ctrlsf.vim && \
+  git clone --depth 1 https://github.com/benmills/vimux.git $HOME/.vim/bundle/vimux && \
+  git clone --depth 1 https://github.com/tpope/vim-eunuch.git $HOME/.vim/bundle/vim-eunuch && \
+  git clone --depth 1 https://github.com/tpope/vim-fugitive.git $HOME/.vim/bundle/vim-fugitive && \
+  git clone --depth 1 https://github.com/google/vim-maktaba.git $HOME/.vim/bundle/vim-maktaba && \
+  git clone --depth 1 https://github.com/google/vim-glaive.git $HOME/.vim/bundle/vim-glaive && \
+  git clone --depth 1 https://github.com/google/vim-syncopate.git $HOME/.vim/bundle/vim-syncopate && \
+  git clone --depth 1 https://github.com/Valloric/YouCompleteMe.git $HOME/.vim/bundle/YouCompleteMe && \
+  git clone --depth 1 https://github.com/antiagainst/vim-rtags.git $HOME/.vim/bundle/vim-rtags && \
+  git clone --depth 1 https://github.com/tomtom/tcomment_vim.git $HOME/.vim/bundle/tcomment_vim && \
+  git clone --depth 1 https://github.com/nathanaelkane/vim-indent-guides.git $HOME/.vim/bundle/vim-indent-guides && \
+  git clone --depth 1 https://github.com/kana/vim-operator-user.git $HOME/.vim/bundle/vim-operator-user && \
+  git clone --depth 1 https://github.com/rhysd/vim-clang-format.git $HOME/.vim/bundle/vim-clang-format && \
+  git clone --depth 1 https://github.com/vim-scripts/DrawIt.git $HOME/.vim/bundle/DrawIt && \
+  git clone --depth 1 https://github.com/vim-scripts/a.vim.git $HOME/.vim/bundle/a.vim && \
+  git clone --depth 1 https://github.com/klen/python-mode.git $HOME/.vim/bundle/python-mode && \
+  git clone --depth 1 https://github.com/fatih/vim-go.git $HOME/.vim/bundle/vim-go && \
+  git clone --depth 1 https://github.com/rust-lang/rust.vim.git $HOME/.vim/bundle/rust.vim && \
+  git clone --depth 1 https://github.com/plasticboy/vim-markdown.git $HOME/.vim/bundle/vim-markdown && \
+  git clone --depth 1 https://github.com/tikhomirov/vim-glsl.git $HOME/.vim/bundle/vim-glsl && \
+  git clone --depth 1 https://github.com/jcf/vim-latex.git $HOME/.vim/bundle/vim-latex && \
+  git clone --depth 1 https://github.com/kbenzie/vim-spirv.git $HOME/.vim/bundle/vim-spirv && \
+  git clone --depth 1 https://github.com/antiagainst/vim-tablegen.git $HOME/.vim/bundle/vim-tablegen && \
+  git clone --depth 1 https://github.com/scrooloose/nerdtree.git $HOME/.vim/bundle/nerdtree && \
+  git clone --depth 1 https://github.com/fholgado/minibufexpl.vim.git $HOME/.vim/bundle/minibufexpl.vim && \
+  git clone --depth 1 https://github.com/majutsushi/tagbar.git $HOME/.vim/bundle/tagbar && \
+  git clone --depth 1 https://github.com/regedarek/ZoomWin.git $HOME/.vim/bundle/ZoomWin && \
+  $HOME/.pyenv/shims/pip install --upgrade pynvim
 
 # Ccache settings
 ENV CCACHE_DIR=/ccahe
-RUN ccache --max-size=50G
+RUN ccache --max-size=20G
 
-WORKDIR /root
+WORKDIR /data
 ENTRYPOINT /bin/zsh
