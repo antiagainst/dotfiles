@@ -1,5 +1,5 @@
 # Build: sudo docker build . -t dev-env --build-arg DOCKER_USERID=$(id -u) --build-arg DOCKER_GROUPID=$(id -g) --build-arg DOCKER_RENDERID=$(getent group render | cut -d: -f3)
-FROM ubuntu:22.04
+FROM antiagainst/triton-hip:ubuntu22.04-python3.10-rocm6.4
 
 SHELL ["/bin/bash", "-e", "-u", "-o", "pipefail", "-c"]
 
@@ -137,8 +137,11 @@ RUN git clone --depth 1 https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/b
   git clone --depth 1 https://github.com/regedarek/ZoomWin.git $HOME/.vim/bundle/ZoomWin
 
 RUN cd $HOME/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && \
-  $HOME/.pyenv/shims/python ./install.py --clangd-completer && \
-  $HOME/.pyenv/shims/pip install --upgrade pynvim
+  $HOME/.pyenv/shims/python ./install.py --clangd-completer
+
+RUN $HOME/.pyenv/shims/pip install --upgrade pip pynvim "setuptools>=40.8.0" wheel \
+  "cmake>=3.18,<4.0" "ninja>=1.11.1" "pybind11>=2.13.1" nanobind lit \
+  numpy scipy pandas matplotlib pytest pytest-xdist pylama pre-commit
 
 WORKDIR /data
 ENTRYPOINT /usr/bin/zsh
