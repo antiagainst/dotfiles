@@ -1,3 +1,4 @@
+# Build: sudo docker build . -t dev-env --build-arg DOCKER_USERID=$(id -u) --build-arg DOCKER_GROUPID=$(id -g) --build-arg DOCKER_RENDERID=$(getent group render | cut -d: -f3)
 FROM ubuntu:22.04
 
 SHELL ["/bin/bash", "-e", "-u", "-o", "pipefail", "-c"]
@@ -32,6 +33,7 @@ RUN apt-get install -y \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Create non-root user account to mirror host user account
 ARG DOCKER_USERID=0
 ARG DOCKER_GROUPID=0
 ARG DOCKER_USERNAME=mirror
@@ -42,6 +44,15 @@ RUN if [ ${DOCKER_USERID} -ne 0 ] && [ ${DOCKER_GROUPID} -ne 0 ]; then \
     useradd --no-log-init --create-home \
       --uid ${DOCKER_USERID} --gid ${DOCKER_GROUPID} \
       --shell /usr/bin/zsh ${DOCKER_USERNAME}; \
+fi
+
+# Create render group needed for AMD GPU access
+ARG DOCKER_RENDERID=0
+
+RUN if [ ${DOCKER_USERID} -ne 0 ] && [ ${DOCKER_RENDERID} -ne 0 ]; then \
+    groupadd --gid ${DOCKER_RENDERID} render && \
+    usermod -aG render ${DOCKER_USERNAME} && \
+    usermod -aG video ${DOCKER_USERNAME}; \
 fi
 
 # Ccache settings
