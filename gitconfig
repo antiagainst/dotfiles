@@ -27,8 +27,6 @@
 [pull]
 	rebase = true
 	ff = only
-[interactive]
-    diffFilter = delta --color-only
 [delta]
     navigate = true
 [diff]
