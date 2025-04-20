@@ -1,7 +1,9 @@
 # Build: sudo docker build . -t dev-env --build-arg DOCKER_USERID=$(id -u) --build-arg DOCKER_GROUPID=$(id -g) --build-arg DOCKER_RENDERID=$(getent group render | cut -d: -f3)
-FROM antiagainst/triton-hip:ubuntu22.04-python3.10-rocm6.4
+FROM compute-artifactory.amd.com:5000/rocm-plus-docker/framework/compute-rocm-npi-mi350:990_ubuntu22.04_py3.10_pytorch_release-2.6_gfx950_cf65c6f
 
 SHELL ["/bin/bash", "-e", "-u", "-o", "pipefail", "-c"]
+
+RUN rm -rf /etc/apt/sources.list.d /etc/apt/preferences.list.d/
 
 # Disable apt-key parse waring
 ARG APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1
@@ -33,6 +35,9 @@ RUN apt-get install -y \
   libglfw3-dev libfreetype6-dev libgtk-3-dev
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Remove triton packages
+RUN pip uninstall -y triton pytorch-triton pytorch-triton-rocm
 
 # Create non-root user account to mirror host user account
 ARG DOCKER_USERID=0
@@ -139,9 +144,11 @@ RUN git clone --depth 1 https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/b
 RUN cd $HOME/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && \
   $HOME/.pyenv/shims/python ./install.py --clangd-completer
 
-RUN $HOME/.pyenv/shims/pip install --upgrade pip pynvim "setuptools>=40.8.0" wheel \
+RUN pip install --upgrade pip pynvim "setuptools>=40.8.0" wheel \
   "cmake>=3.18,<4.0" "ninja>=1.11.1" "pybind11>=2.13.1" nanobind lit \
-  numpy scipy pandas matplotlib pytest pytest-xdist pylama pre-commit
+  "numpy<2.0" scipy pandas matplotlib pytest pytest-xdist pylama pre-commit clang-format
+
+RUN mkdir $HOME/.ssh && echo -e "Host github.com\n\tHostname ssh.github.com\n\tPort 443" >> $HOME/.ssh/config
 
 WORKDIR /data
 ENTRYPOINT /usr/bin/zsh
