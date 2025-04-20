@@ -1,5 +1,5 @@
 # Build: sudo docker build . -t dev-env --build-arg DOCKER_USERID=$(id -u) --build-arg DOCKER_GROUPID=$(id -g) --build-arg DOCKER_RENDERID=$(getent group render | cut -d: -f3)
-FROM antiagainst/triton-hip:ubuntu22.04-python3.10-rocm6.4
+FROM ghcr.io/rocm/therock_pytorch_dev_ubuntu_24_04_gfx950:main
 
 SHELL ["/bin/bash", "-e", "-u", "-o", "pipefail", "-c"]
 
@@ -86,15 +86,10 @@ RUN $HOME/.cargo/bin/cargo install ripgrep lsd bat bottom broot skim cargo-cache
   $HOME/.cargo/bin/cargo cache -a
 RUN git clone --depth 1 https://github.com/lotabout/skim $HOME/.skim && $HOME/.skim/install
 
-# Pyenv setup
-ARG PYTHON_CONFIGURE_OPTS="--enable-shared"
-RUN curl https://pyenv.run > python.sh && bash python.sh && rm -rf python.sh && \
-  $HOME/.pyenv/bin/pyenv install 3.11.5 && $HOME/.pyenv/bin/pyenv global 3.11.5
-RUN $HOME/.pyenv/shims/pip install --upgrade pip powerline-status
-
 # Development environment configuration files
+RUN pip install --break-system-packages --upgrade pip powerline-status
 RUN git clone --depth 1 https://github.com/antiagainst/dotfiles $HOME/.dotfiles && \
-  cd $HOME/.dotfiles && PIP_PATH=$HOME/.pyenv/shims/pip ./install.sh
+  cd $HOME/.dotfiles && ./install.sh
 
 # Vim plugins
 # It would be nice to directly install all plugins using Vundle. But didn't
@@ -144,11 +139,15 @@ RUN git clone --depth 1 https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/b
   git clone --depth 1 https://github.com/regedarek/ZoomWin.git $HOME/.vim/bundle/ZoomWin
 
 RUN cd $HOME/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && \
-  $HOME/.pyenv/shims/python ./install.py --clangd-completer
+  python ./install.py --clangd-completer
 
-RUN $HOME/.pyenv/shims/pip install --upgrade pip pynvim "setuptools>=40.8.0" wheel \
+RUN pip install --break-system-packages --upgrade pip pynvim "setuptools>=40.8.0" wheel \
   "cmake>=3.18,<4.0" "ninja>=1.11.1" "pybind11>=2.13.1" nanobind lit \
-  numpy scipy pandas matplotlib pytest pytest-xdist pylama pre-commit
+  "numpy<2.0" scipy pandas matplotlib pytest pytest-xdist pylama pre-commit clang-format expecttest
+
+RUN mkdir $HOME/.ssh && echo -e "Host github.com\n\tHostname ssh.github.com\n\tPort 443" >> $HOME/.ssh/config && \
+  echo -e "\nexport PIP_BREAK_SYSTEM_PACKAGES=1" >> $HOME/.zshenv && \
+  echo -e "\nexport pybind11_DIR=$(python -m site --user-site)/pybind11/share/cmake/pybind11" >> $HOME/.zshenv
 
 WORKDIR /data
 ENTRYPOINT /usr/bin/zsh
