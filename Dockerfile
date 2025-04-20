@@ -9,11 +9,12 @@ ARG APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1
 # Basic development environment
 RUN apt-get update && apt-get install -y \
   software-properties-common \
-  curl wget git zsh tmux \
+  curl wget openssh-client git zsh tmux less \
   build-essential cmake ninja-build \
   clang lld ccache \
   python3 python3-pip \
-  pkg-config fasd
+  pkg-config fasd \
+  numactl
 
 RUN add-apt-repository -y ppa:neovim-ppa/stable && \
   apt-get update && apt-get install -y vim neovim vim-youcompleteme
