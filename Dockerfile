@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
   clang lld ccache \
   python3 python3-pip \
   pkg-config fasd \
-  numactl
+  sudo numactl
 
 RUN add-apt-repository -y ppa:neovim-ppa/stable && \
   apt-get update && apt-get install -y vim neovim vim-youcompleteme
@@ -54,6 +54,13 @@ RUN if [ ${DOCKER_USERID} -ne 0 ] && [ ${DOCKER_RENDERID} -ne 0 ]; then \
     groupadd --gid ${DOCKER_RENDERID} render && \
     usermod -aG render ${DOCKER_USERNAME} && \
     usermod -aG video ${DOCKER_USERNAME}; \
+fi
+
+# Set up sudo access
+RUN if [ ${DOCKER_USERID} -ne 0 ] && [ ${DOCKER_RENDERID} -ne 0 ]; then \
+    echo "${DOCKER_USERNAME}:${DOCKER_USERNAME}" | chpasswd && \
+    usermod -aG sudo ${DOCKER_USERNAME} && \
+    echo "username ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/username; \
 fi
 
 # Ccache settings
