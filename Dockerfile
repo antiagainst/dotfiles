@@ -139,7 +139,7 @@ RUN git clone --depth 1 https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/b
   git clone --depth 1 https://github.com/regedarek/ZoomWin.git $HOME/.vim/bundle/ZoomWin
 
 RUN cd $HOME/.vim/bundle/YouCompleteMe && git submodule update --init --recursive && \
-  python ./install.py --clangd-completer
+  python3 ./install.py --clangd-completer
 
 RUN pip install --break-system-packages --upgrade pip pynvim "setuptools>=40.8.0" wheel \
   "cmake>=3.18,<4.0" "ninja>=1.11.1" "pybind11>=2.13.1" nanobind lit \
@@ -147,7 +147,7 @@ RUN pip install --break-system-packages --upgrade pip pynvim "setuptools>=40.8.0
 
 RUN mkdir $HOME/.ssh && echo -e "Host github.com\n\tHostname ssh.github.com\n\tPort 443" >> $HOME/.ssh/config && \
   echo -e "\nexport PIP_BREAK_SYSTEM_PACKAGES=1" >> $HOME/.zshenv && \
-  echo -e "\nexport pybind11_DIR=$(python -m site --user-site)/pybind11/share/cmake/pybind11" >> $HOME/.zshenv
+  echo -e "\nexport pybind11_DIR=$(python3 -m site --user-site)/pybind11/share/cmake/pybind11" >> $HOME/.zshenv
 
 WORKDIR /data
 ENTRYPOINT /usr/bin/zsh
