@@ -5,7 +5,6 @@
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
-set rtp+=~/.skim
 
 call vundle#begin()
 
@@ -34,8 +33,7 @@ Plugin 'wellle/targets.vim'
 "Plugin 'kien/ctrlp.vim'
 " Plugin 'rking/ag.vim'
 " Plugin 'junegunn/fzf'
-" Plugin 'lotabout/skim'   " contains :SK and skim#run
-Plugin 'lotabout/skim.vim' " contains utilities built upon skim like :Files, :Buffers
+Plugin 'antiagainst/skim'    " contains :SK and skim#run, skim#wrap
 Plugin 'jremmen/vim-ripgrep' " contains :Rg
 Plugin 'dyng/ctrlsf.vim'
 
@@ -272,7 +270,10 @@ if has("multi_byte")
     " detect UTF-8 locale, and replace CJK setting if needed
     if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
         set encoding=utf-8
-        set termencoding=utf-8
+        " Only set termencoding on non-macOS systems
+        if !has('mac') && !has('macunix') && g:os != 'Darwin'
+            set termencoding=utf-8
+        endif
         set fileencoding=utf-8
     endif
 else
@@ -285,7 +286,7 @@ endif
 
 " airline
 
-let g:airline_theme='dark'
+let g:airline_theme='papercolor'
 let g:airline_powerline_fonts = 1
 set laststatus=2
 
