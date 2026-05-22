@@ -15,6 +15,20 @@ git clone git@github.com:antiagainst/dotfiles.git .dotfiles
 git clone --recursive git@github.com:antiagainst/prezto.git .zprezto
 ```
 
+### Install essential tools
+
+```sh
+sudo apt install tmux zsh vim neovim
+sudo apt install git cmake ninja-build clang lld
+sudo apt install python3 python3-pip
+sudo apt install rbenv
+suto apt install xclip
+sudo apt install fasd
+
+sudo apt install ccache
+ccache --max-size=50G
+```
+
 ### Setup Zsh configuration
 
 ```sh
@@ -29,26 +43,25 @@ done
 
 # Set Zsh as default shell
 chsh -s /bin/zsh
+
+# Or add following to .bashrc
+cat >> ~/.bashrc <<'EOF'
+
+# Automatically switch to zsh if available and not already running
+if [ -t 1 ] && [ -x /usr/bin/zsh ] && [ -z "$ZSH_VERSION" ]; then
+    exec /usr/bin/zsh
+fi
+EOF
 ```
 
-### Install essential tools
+### Install Rust tools
 
 ```sh
-sudo apt install tmux zsh vim neovim
-sudo apt install git cmake ninja-build clang lld
-sudo apt install python3 python3-pip
-sudo apt install rbenv
-suto apt install xclip
-
-sudo apt install fasd
-
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cargo install ripgrep lsd bat bottom broot skim
+
 # And use the following command to also install sk-tmux
 git clone --depth 1 git@github.com:lotabout/skim.git $HOME/.skim && $HOME/.skim/install
-
-sudo apt install ccache
-ccache --max-size=50G
 ```
 
 ### Set up Python
